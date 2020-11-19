@@ -17,6 +17,7 @@ Route::redirect('/', '/en');
 Auth::routes();
 
 Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend'],function () {
+    Route::get('/', 'HomeController@index');
 
     Route::get('/home', 'HomeController@index')->name('home');
 
@@ -241,8 +242,3 @@ Route::group(['prefix' => '{language}'], function(){
 
 
 //  Backend Route Controll 
-
-
-
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
