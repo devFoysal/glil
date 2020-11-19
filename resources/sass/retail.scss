@@ -1,0 +1,412 @@
+#short-banner {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0px 0 60px 0;
+
+    @media screen and (min-width: 1600px) {
+        background-position-x: 95px;
+    }
+    @media screen and (min-width: 1300px) and (max-width: 1599px) {
+        background-position-x: -150px;
+    }
+    .container {
+        height: 100%;
+
+        .row {
+            align-items: flex-end;
+            height: 100%;
+
+            .col-12 {
+                @media screen and (max-width: 768px) {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    p {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+        color: #2c302e;
+    }
+
+    h1 {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 46px;
+        text-transform: capitalize;
+        color: #000000;
+
+        span {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    }
+}
+
+#bread-crumb {
+    background: rgba(247, 148, 30, 0.05);
+    padding: 50px 0 0 0;
+
+    a {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 25px;
+        color: #2c302e;
+        text-decoration: none;
+    }
+}
+
+#family-plan {
+    background: rgba(247, 148, 30, 0.05);
+    padding: 0;
+
+    h1 {
+        @media screen and (min-width: 1200px) and (max-width: 1400px) {
+            font-size: 40px;
+        }
+        @media screen and (max-width: 576px) {
+            font-size: 30px;
+        }
+    }
+}
+
+// contact us section in retail page
+#contact-us {
+    background: rgba(247, 148, 30, 0.05);
+    padding: 50px 0;
+
+    h4 {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 36px;
+        text-transform: capitalize;
+        color: #000000;
+        margin-bottom: 30px;
+    }
+}
+
+#banner-no-text {
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#book-appointment {
+    background: #fef9f3;
+    padding-top: 50px;
+    h2 {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 49px;
+        color: #2c302e;
+        margin-bottom: 20px;
+        span {
+            font-weight: bold;
+        }
+    }
+
+    p {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+
+        color: #000000;
+    }
+}
+
+/*==================================
+========== POLICY INFO =============
+===================================*/
+
+#policy-info {
+    background: #fef9f3;
+    padding: 50px 0;
+
+    h2 {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 49px;
+        color: #2c302e;
+        margin-bottom: 30px;
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .labels {
+        display: block;
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+        /* identical to box height, or 156% */
+
+        display: flex;
+        align-items: center;
+
+        color: #000000;
+    }
+
+    /* Hide the browser's default radio button */
+    .labels input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        border: 1px solid;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .labels:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .labels input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .labels .checkmark:after {
+        top: 2px;
+        left: 2px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #f7941e;
+        position: relative;
+    }
+}
+
+/*==================================
+========== NEWS EVENT =============
+===================================*/
+#news-event {
+    background: #fef9f3;
+    padding: 50px 0 70px 0;
+    h2 {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 49px;
+        display: flex;
+        align-items: center;
+        color: #2c302e;
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    h6 {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 28px;
+        color: #2c302e;
+    }
+
+    .card {
+        background: #ffffff;
+        border: 0.5px solid rgba(44, 48, 46, 0.1);
+        border-radius: 20px;
+
+        .card-body {
+            .card-text {
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 28px;
+                color: #2c302e;
+            }
+
+            .card-title {
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 36px;
+                text-transform: capitalize;
+                color: #2c302e;
+            }
+        }
+
+        .card-footer {
+            padding: 30px 20px;
+            background-color: #fff;
+            border-radius: 0 0 20px 20px;
+        }
+    }
+
+    .social-icons {
+        margin-left: 20px;
+        display: flex;
+        li {
+            list-style: none;
+            padding: 0 10px;
+            a {
+                color: #232075;
+                text-decoration: none;
+                transition: ease-in-out 0.3s;
+            }
+
+            &:hover {
+                a {
+                    color: #f7941e;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+
+    .side-bar {
+        background: #ffffff;
+        border: 0.5px solid rgba(44, 48, 46, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+
+        .title {
+            font-family: Open Sans;
+            margin-bottom: 0;
+            padding-bottom: 15px;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            color: #000000;
+            border-bottom: 0.5px solid rgba(177, 177, 177, 0.5);
+        }
+
+        .side-bar-box {
+            display: flex;
+            padding: 15px 0 25px 0;
+            border-bottom: 0.5px solid rgba(177, 177, 177, 0.5);
+
+            &:last-child {
+                border-bottom: 0;
+                padding-bottom: 10px;
+            }
+
+            img {
+                border-radius: 10px;
+                margin-right: 10px;
+            }
+
+            h6 {
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 28px;
+                /* or 156% */
+
+                display: flex;
+                align-items: center;
+
+                color: #2c302e;
+            }
+        }
+    }
+}
+
+// side bar
+
+// #sidebar {
+//     position: absolute;
+//     width: 65px;
+//     height: 418px;
+//     right: 0;
+//     top: 304px;
+
+//     background: #f7941e;
+//     border-radius: 10px 0px 0px 10px;
+
+//     a {
+//         font-family: Montserrat;
+//         font-style: normal;
+//         font-weight: normal;
+//         font-size: 16px;
+//         line-height: 20px;
+//         text-align: center;
+
+//         color: #fcf7f4;
+
+//         transform: rotate(-90deg);
+//     }
+// }
+
+// .side-option {
+//     position: absolute;
+//     right: 0;
+//     background: #fff;
+//     padding: 50px 10px 20px 20px;
+//     border: 1px solid rgba(0, 0, 0, 0.25);
+//     box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+//     border-radius: 20px 0 0 20px;
+
+//     ul {
+//         margin: 0;
+//         padding: 0;
+//         list-style: none;
+//         display: table-caption;
+
+//         li {
+//             border-bottom: 1px solid #000;
+//         }
+
+//         .list-text {
+//             display: inline-block;
+//             -webkit-transform: rotate(270deg);
+//             transform: rotate(270deg);
+//         }
+//     }
+// }

@@ -1,0 +1,27 @@
+.details-page {
+    .blue-bg {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+
+        .download-brochure {
+            background: #f7941e;
+            box-shadow: 0px 10px 25px rgba(99, 65, 65, 0.1);
+
+            .nav-link {
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 28px;
+
+                color: #fcf7f4 !important;
+            }
+        }
+    }
+
+    .ash-bg {
+        height: 500px !important;
+    }
+}
