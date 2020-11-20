@@ -32,6 +32,8 @@
                       </ul>
                   </div>
                   <li class="side-menu-item px-3"><a href="{{ url('admin/newsblog') }}" class="w-100 py-3 pl-4">News & Blog</a></li>
+
+                  <li class="side-menu-item px-3"><a href="{{ url('admin/retail') }}" class="w-100 py-3 pl-4">Retail</a></li>
               </ul>
           </div>
       </div>
