@@ -62,20 +62,28 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
     
     
     // News Blog Routes
-    Route::get('/newsblog', 'NewsblogController@index');
+    Route::group(['prefix' => 'newsblog'], function(){
+        Route::get('/', 'NewsblogController@index')->name('newsblog.home');
+        Route::get('add', 'NewsblogController@addForm')->name('newsblog.add.form');
+        Route::post('store', 'NewsblogController@store')->name('newsblog.store');
+        Route::get('edit/{id}', 'NewsblogController@edit')->name('newsblog.edit');
+        Route::post('update', 'NewsblogController@update')->name('newsblog.update');
+        Route::get('destroy/{id}', 'NewsblogController@destroy')->name('newsblog.destroy');
+    });
+    // Route::get('/newsblog', 'NewsblogController@index');
 
-    Route::post('/newsblog/store', 'NewsblogController@store')->name('newsblog.store');
+    // Route::post('/newsblog/store', 'NewsblogController@store')->name('newsblog.store');
 
-    Route::post('/newsblog/edit', 'NewsblogController@edit')->name('newsblog.edit');
+    // Route::post('/newsblog/edit', 'NewsblogController@edit')->name('newsblog.edit');
 
-    Route::get('/newsblog/{id}/destroy', 'NewsblogController@destroy')->name('newsblog.destroy');
+    // Route::get('/newsblog/{id}/destroy', 'NewsblogController@destroy')->name('newsblog.destroy');
     
 });
 
 
 
 
-Route::group(['prefix' => '{language}'], function(){
+Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], function(){
 
     Route::get('/', function(){
         return view("pages.home.index");
@@ -214,15 +222,19 @@ Route::group(['prefix' => '{language}'], function(){
     Route::get('/media-corner', function(){
         return view("pages.mediaCorner.index");
     })->name("mediaCorner");
+
     Route::get('/financials', function(){
         return view("pages.financials.index");
     })->name("financials");
+
     Route::get('/newsletter', function(){
         return view("pages.newsletter.index");
     })->name("newsLetter");
+
     Route::get('/corona-virus-awareness', function(){
         return view("pages.awareness.index");
     })->name("coronaVirus");
+
     Route::get('/supports', function(){
         return view("pages.supports.index");
     })->name("supports");
@@ -231,9 +243,11 @@ Route::group(['prefix' => '{language}'], function(){
     Route::get('/contact-us', function(){
         return view("pages.contact.index");
     })->name("contactUs");
-    Route::get('/blog', function(){
-        return view("pages.blog.index");
-    })->name("blog");
+
+    // Blog
+    Route::get('/blogs','GLILController@blogs')->name("blogs");
+    Route::get('/blog/{id}','GLILController@blog')->name("blog.detail");
+
     Route::get('/csr-activities', function(){
         return view("pages.csr.index");
     })->name("CSR");

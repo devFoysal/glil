@@ -16,11 +16,18 @@ class CreateNewsblogsTable extends Migration
         Schema::create('newsblogs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
-            $table->string('title_en');
-            $table->string('title_bn');
-            $table->text('description_en');
-            $table->text('description_bn');
-            $table->string('image');
+            $table->string('title_en')->nullable(true);
+            $table->string('title_bn')->nullable(true);
+            $table->text('short_description_en')->nullable(true);
+            $table->text('short_description_bn')->nullable(true);
+            $table->text('description_en')->nullable(true);
+            $table->text('description_bn')->nullable(true);
+            $table->string('image')->nullable(true);
+            $table->string('cover_image')->nullable(true);
+            $table->string('slug_en')->nullable(true);
+            $table->string('slug_bn')->nullable(true);
+            $table->bigInteger('views')->default(1);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
