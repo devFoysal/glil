@@ -18,7 +18,7 @@
 <div class="card-body">
 <div class="d-flex justify-content-between">
 <div class="card-title">Retail</div>
-<a class="btn btn-success btn-icon m-2" ><i class="fas fa-plus-square"></i>&nbsp; Update Retail Page</a>
+<a href="{{route('retail.edit',)}}" class="btn btn-success btn-icon m-2" ><i class="fas fa-plus-square"></i>&nbsp; Update Retail Page</a>
 <a href="{{route('retail.plan.create')}}" class="btn btn-success btn-icon m-2" ><i class="fas fa-plus-square"></i>&nbsp; Add News Reatil Plan</a>
 
 </div>

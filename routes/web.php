@@ -25,8 +25,8 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
     // Retail  &  Reatil Plan Route 
 
     Route::get('/retail', 'RetailController@index')->name('retail.index');
-    Route::get('/retail/edit/{id}', 'RetailController@edit')->name('retail.edit');
-    Route::put('/retail/{id}', 'RetailController@update')->name('retail.update');
+    Route::get('/retail/edit', 'RetailController@edit')->name('retail.edit');
+    Route::put('/retail/edit', 'RetailController@update')->name('retail.update');
 
 
     Route::get('/retail-plan/', 'RetailPlanController@create')->name('retail.plan.create');

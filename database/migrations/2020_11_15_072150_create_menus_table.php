@@ -17,7 +17,7 @@ class CreateMenusTable extends Migration
             $table->bigIncrements('id');
             $table->string('name_en');
             $table->string('name_bn');
-            $table->tinyInteger('orders', 3)->default(1);
+            $table->tinyInteger('orders')->default(1);
             $table->string('status');
             $table->timestamps();
         });
