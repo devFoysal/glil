@@ -16,8 +16,8 @@ class MenuController extends Controller
 
     public function index ()
     {
-        $menus = Menu::all();
-        return view('backend.menu', compact('menus'));
+        $menus = Menu::orderBy('orders', 'asc')->get();
+        return view('backend.menu.index', compact('menus'));
     }
 
     public function store () 
@@ -37,6 +37,7 @@ class MenuController extends Controller
         $data = request()->validate([
             'name_en'   => 'required',
             'name_bn'   => 'required',
+            'orders'   => 'required',
             'status'    => 'required',
         ]);
 

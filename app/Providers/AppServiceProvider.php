@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Menu;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        View::composer('*', function ($view) {
+            $menus = Menu::with('submenus')->where(['status' => 1])->orderBy('orders', 'asc')->get();
+            $view->with('menus', $menus);
+            $view->with('Bn', app()->getLocale() == 'bn' ? true : false);
+        });
     }
 
     /**

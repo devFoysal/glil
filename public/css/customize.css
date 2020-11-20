@@ -1,0 +1,9 @@
+.note-btn{
+    color: #212529 !important;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+}
+
+a.link:hover {
+    text-decoration: none;
+}
