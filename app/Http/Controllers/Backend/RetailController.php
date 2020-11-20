@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Retail;
+use App\Models\RetailPlan;
 use Illuminate\Http\Request;
 
 class RetailController extends Controller
@@ -24,7 +25,7 @@ class RetailController extends Controller
      */
     public function index()
     {
-        $retails = Retail::all();
-        return view('backend.retail.index',compact('retails'));
+        $retailPlans = RetailPlan::orderBy('id','desc')->get();
+        return view('backend.retail.index',compact('retailPlans'));
     }
 }
