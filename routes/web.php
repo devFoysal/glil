@@ -16,10 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/en');
 Auth::routes();
 
+// Backend Route
 Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend'],function () {
     Route::get('/', 'HomeController@index');
 
     Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/retail', 'RetailController@index')->name('retial.index');
+    Route::get('/retail/add', 'RetailController@add')->name('retailGetForm');
+    Route::post('/retail/add', 'RetailController@add')->name('retailGetForm');
 
     // Main Menu Routes
     Route::get('/menu', 'MenuController@index');
