@@ -69,15 +69,7 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
         Route::get('edit/{id}', 'NewsblogController@edit')->name('newsblog.edit');
         Route::post('update', 'NewsblogController@update')->name('newsblog.update');
         Route::get('destroy/{id}', 'NewsblogController@destroy')->name('newsblog.destroy');
-    });
-    // Route::get('/newsblog', 'NewsblogController@index');
-
-    // Route::post('/newsblog/store', 'NewsblogController@store')->name('newsblog.store');
-
-    // Route::post('/newsblog/edit', 'NewsblogController@edit')->name('newsblog.edit');
-
-    // Route::get('/newsblog/{id}/destroy', 'NewsblogController@destroy')->name('newsblog.destroy');
-    
+    });    
 });
 
 

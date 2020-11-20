@@ -17,8 +17,8 @@ class SubmenuController extends Controller
     public function index ()
     {
         $menus = Menu::all();
-        $submenus = Submenu::all();
-        return view('backend.submenu', compact('menus', 'submenus'));
+        $submenus = Submenu::orderBy('orders', 'asc')->get();
+        return view('backend.menu.submenu', compact('menus', 'submenus'));
     }
 
     public function store () 
@@ -40,6 +40,7 @@ class SubmenuController extends Controller
             'name_en'   => 'required',
             'menu_id'   => 'required',
             'name_bn'   => 'required',
+            'orders'    => 'required',
             'status'    => 'required',
         ]);
 

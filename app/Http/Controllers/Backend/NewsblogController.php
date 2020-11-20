@@ -117,9 +117,9 @@ class NewsblogController extends Controller
             unlink('uploads/blogs/thumbnail/' . $blog->image);
             unlink('uploads/blogs/cover/' . $blog->cover_image);
             $blog->delete();
-            return redirect()->back()->with('success', 'News & Blog Deleted Successfully.');
+            return redirect()->route("newsblog.home")->with('success', 'News & Blog Deleted Successfully.');
         } catch (\Throwable $th) {
-            return redirect()->route("newsblog.home")->withError($th->getMessage())->withInput();
+            return redirect()->route("newsblog.add")->withError($th->getMessage())->withInput();
         }
     }
 }

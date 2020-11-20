@@ -95,134 +95,157 @@
                             বাংলা
                         </a>
                         </li> --}}
-
-                        <li class="d">
+                        @if (count($menus) > 0)
+                        @foreach ($menus as $menu)
+                        <li class="{{count($menu->submenus) > 0 ? 'd' : ''}}">
                             <a class="main-link" href="{{route('retail', app()->getLocale())}}"
                                 title="Click Here to go Retail Page">
-                                Retail
+                                @if ($Bn)
+                                {{$menu->name_bn}}
+                                @else
+                                {{$menu->name_en}}
+                                @endif
+                                @if (count($menu->submenus))
                                 <div class="dropdown" style="z-index: 500">
+                                    @foreach ($menu->submenus as $submenu)
                                     <a class="dropdown-item" href="{{route('savings', app()->getLocale())}}">
-                                        Savings
+                                        @if ($Bn)
+                                        {{$submenu->name_bn}}
+                                        @else
+                                        {{$submenu->name_en}}
+                                        @endif
                                     </a>
-                                    <a class="dropdown-item" href="{{route('earlyCash', app()->getLocale())}}">
-                                        Early Cash
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('children', app()->getLocale())}}">
-                                        Children
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('retirement', app()->getLocale())}}">
-                                        Retirements
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('investment', app()->getLocale())}}">
-                                        Investment
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('supplymentary', app()->getLocale())}}">
-                                        Supplementary Benifits
-                                    </a>
+                                    @endforeach
                                 </div>
-                            </a>
-                        </li>
+                                @endif
 
+                                {{-- <div class="dropdown" style="z-index: 500">
+                                    <a class="dropdown-item" href="{{route('savings', app()->getLocale())}}">
+                                Savings
+                            </a>
+                            <a class="dropdown-item" href="{{route('earlyCash', app()->getLocale())}}">
+                                Early Cash
+                            </a>
+                            <a class="dropdown-item" href="{{route('children', app()->getLocale())}}">
+                                Children
+                            </a>
+                            <a class="dropdown-item" href="{{route('retirement', app()->getLocale())}}">
+                                Retirements
+                            </a>
+                            <a class="dropdown-item" href="{{route('investment', app()->getLocale())}}">
+                                Investment
+                            </a>
+                            <a class="dropdown-item" href="{{route('supplymentary', app()->getLocale())}}">
+                                Supplementary Benifits
+                            </a>
+                    </div> --}}
+                    </a>
+                    </li>
+                    @endforeach
+                    @endif
+
+
+
+                    {{-- 
                         <li class="d">
                             <a class="main-link" href="{{route('corporate', app()->getLocale())}}"
-                                title="Click Here to go Corporate Page">
-                                Corporate
-                                <div class="dropdown dropdown2" style="z-index: 500">
-                                    <a class="dropdown-item" href="{{route('groupTermLife', app()->getLocale())}}">
-                                        Group Term Life
-                                    </a>
-                                    <a class="dropdown-item"
-                                        href="{{route('criticalIllnessBenefit', app()->getLocale())}}">
-                                        Critical Illness Benefit
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('groupMedical', app()->getLocale())}}">
-                                        Group Medical Insurance Plan
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('groupPersonal', app()->getLocale())}}">
-                                        Group Personal Accident Benefit
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="main-link" href="{{route('bancassurance', app()->getLocale())}}">
-                                Bancassurance
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="main-link" href="{{route('microinsurance', app()->getLocale())}}">
-                                Micro Insurance
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="main-link" href="{{route('claims', app()->getLocale())}}">
-                                Claims
-                            </a>
-                        </li>
-
-                        {{-- <li class="about-us">
-                            <a class="main-link" href="{{route('aboutUs', app()->getLocale())}}">
-                        About Us
+                    title="Click Here to go Corporate Page">
+                    Corporate
+                    <div class="dropdown dropdown2" style="z-index: 500">
+                        <a class="dropdown-item" href="{{route('groupTermLife', app()->getLocale())}}">
+                            Group Term Life
                         </a>
-                        </li> --}}
+                        <a class="dropdown-item" href="{{route('criticalIllnessBenefit', app()->getLocale())}}">
+                            Critical Illness Benefit
+                        </a>
+                        <a class="dropdown-item" href="{{route('groupMedical', app()->getLocale())}}">
+                            Group Medical Insurance Plan
+                        </a>
+                        <a class="dropdown-item" href="{{route('groupPersonal', app()->getLocale())}}">
+                            Group Personal Accident Benefit
+                        </a>
+                    </div>
+                    </a>
+                    </li>
 
-                        <li class="d">
+                    <li>
+                        <a class="main-link" href="{{route('bancassurance', app()->getLocale())}}">
+                            Bancassurance
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="main-link" href="{{route('microinsurance', app()->getLocale())}}">
+                            Micro Insurance
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="main-link" href="{{route('claims', app()->getLocale())}}">
+                            Claims
+                        </a>
+                    </li> --}}
+
+                    {{-- <li class="about-us">
+                            <a class="main-link" href="{{route('aboutUs', app()->getLocale())}}">
+                    About Us
+                    </a>
+                    </li> --}}
+
+                    {{-- <li class="d">
                             <a class="main-link" href="#">
                                 More
                                 <div class="dropdown more-options" style="z-index: 500">
                                     <a class="dropdown-item" href="{{route('aboutUs', app()->getLocale())}}">
-                                        About Us
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('mediaCorner', app()->getLocale())}}">
-                                        Media Corner
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('financials', app()->getLocale())}}">
-                                        Financials
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('newsLetter', app()->getLocale())}}">
-                                        Newsletter
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('coronaVirus', app()->getLocale())}}">
-                                        Corona Virus Awareness
-                                    </a>
-                                </div>
-                            </a>
-                        </li>
+                    About Us
+                    </a>
+                    <a class="dropdown-item" href="{{route('mediaCorner', app()->getLocale())}}">
+                        Media Corner
+                    </a>
+                    <a class="dropdown-item" href="{{route('financials', app()->getLocale())}}">
+                        Financials
+                    </a>
+                    <a class="dropdown-item" href="{{route('newsLetter', app()->getLocale())}}">
+                        Newsletter
+                    </a>
+                    <a class="dropdown-item" href="{{route('coronaVirus', app()->getLocale())}}">
+                        Corona Virus Awareness
+                    </a>
+                </div>
+                </a>
+                </li> --}}
 
 
-                        <li class="line">
-                            <img src={{asset("assets/img/line.png")}} class="img-fluid" alt="" />
-                        </li>
-                        <button class="img-btn btn1">
-                            <img src={{asset("assets/img/easylife.png")}} class="img-fluid" alt="" />
-                        </button>
-                        <button class="img-btn btn-gurdian">
-                            <img src={{asset("assets/img/mygurdian.png")}} class="img-fluid" alt="" />
-                        </button>
-                        {{-- <li>
+                <li class="line">
+                    <img src={{asset("assets/img/line.png")}} class="img-fluid" alt="" />
+                </li>
+                <button class="img-btn btn1">
+                    <img src={{asset("assets/img/easylife.png")}} class="img-fluid" alt="" />
+                </button>
+                <button class="img-btn btn-gurdian">
+                    <img src={{asset("assets/img/mygurdian.png")}} class="img-fluid" alt="" />
+                </button>
+                {{-- <li>
                             <i class="fas fa-search"></i>
                         </li> --}}
-                        <li class="d">
-                            <a href="#" class="main-link">
-                                <i class="fas fa-search" onclick="myFunction()">
-                                </i>
-                                <div id="dropdowns" class="dropdowns" style="z-index: 20000; right: 1%">
-                                    <div class="dropdown-item">
-                                        <form action="" class="d-flex">
-                                            <input type="text" class="form-control" placeholder="Search">
-                                            <button type="submit" class="btn yellow-btn ml-4">Search</button>
-                                            <i onclick="myFunctiontwo()" class="fas fa-times ml-3"></i>
-                                        </form>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </div>
-                </div>
+                <li class="d">
+                    <a href="#" class="main-link">
+                        <i class="fas fa-search" onclick="myFunction()">
+                        </i>
+                        <div id="dropdowns" class="dropdowns" style="z-index: 20000; right: 1%">
+                            <div class="dropdown-item">
+                                <form action="" class="d-flex">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <button type="submit" class="btn yellow-btn ml-4">Search</button>
+                                    <i onclick="myFunctiontwo()" class="fas fa-times ml-3"></i>
+                                </form>
+                            </div>
+                        </div>
+                    </a>
+                </li>
             </div>
+        </div>
+        </div>
         </div>
     </section>
 
