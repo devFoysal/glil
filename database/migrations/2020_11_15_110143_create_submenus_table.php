@@ -19,6 +19,8 @@ class CreateSubmenusTable extends Migration
             $table->string('name_en');
             $table->string('name_bn');
             $table->tinyInteger('orders')->default(1);
+            $table->string('slug_en')->nullable(true);
+            $table->string('slug_bn')->nullable(true);
             $table->string('status');
             $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
 

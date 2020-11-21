@@ -98,7 +98,7 @@
                         @if (count($menus) > 0)
                         @foreach ($menus as $menu)
                         <li class="{{count($menu->submenus) > 0 ? 'd' : ''}}">
-                            <a class="main-link" href="{{route('retail', app()->getLocale())}}"
+                            <a class="main-link" href="../{{$menu->slug_en}}"
                                 title="Click Here to go Retail Page">
                                 @if ($Bn)
                                 {{$menu->name_bn}}
@@ -108,7 +108,7 @@
                                 @if (count($menu->submenus))
                                 <div class="dropdown" style="z-index: 500">
                                     @foreach ($menu->submenus as $submenu)
-                                    <a class="dropdown-item" href="{{route('savings', app()->getLocale())}}">
+                                    <a class="dropdown-item" href="../{{$menu->slug_en}}/{{$submenu->slug_en}}">
                                         @if ($Bn)
                                         {{$submenu->name_bn}}
                                         @else

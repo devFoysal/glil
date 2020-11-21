@@ -20,29 +20,48 @@ class MenuController extends Controller
         return view('backend.menu.index', compact('menus'));
     }
 
-    public function store () 
+    public function store (Request $request) 
     {
-        $data = request()->validate([
+        $validate = request()->validate([
             'name_en'   => 'required',
             'name_bn'   => 'required',
             'status'    => 'required',
         ]);
 
-        Menu::create($data);
+        if(! $validate) return back()->with('error', 'Please try again');
+
+        $menu = new Menu;
+        $menu->name_en = $request->name_en;
+        $menu->name_bn = $request->name_bn;
+        $menu->slug_en = $request->slug_en;
+        $menu->slug_bn = $request->slug_bn;
+        $menu->status = $request->status;
+        $menu->save();
         return back()->with('success', 'Menu Created Successfully');
+       
     }
 
     public function edit (Request $request)
     {
-        $data = request()->validate([
+        $validate = request()->validate([
             'name_en'   => 'required',
             'name_bn'   => 'required',
             'orders'   => 'required',
             'status'    => 'required',
         ]);
 
-        Menu::where('id', $request->id)->update($data);
+        if(! $validate) return redirect()->back()->with('error', 'Please try again');
+
+        $menu = Menu::findOrFail($request->id);
+        $menu->name_en = $request->name_en;
+        $menu->name_bn = $request->name_bn;
+        $menu->orders = $request->orders;
+        $menu->slug_en = $request->slug_en;
+        $menu->slug_bn = $request->slug_bn;
+        $menu->status = $request->status;
+        $menu->update();
         return redirect()->back()->with('success', 'Menu Updated Successfully');
+        
     }
 
     public function destroy ($id)

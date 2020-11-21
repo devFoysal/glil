@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReatilFrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -201,9 +202,11 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
     })->name("gurdianSurokkha");
 
     // Retails Single Page
+    Route::get('retail/{plan}','ReatilFrontController@showPlan');
     Route::get('/savings', function(){
         return view("pages.retailSinglePage.savings.index");
     })->name("savings");
+
     Route::get('/early-cash', function(){
         return view("pages.retailSinglePage.earlyCash.index");
     })->name("earlyCash");
