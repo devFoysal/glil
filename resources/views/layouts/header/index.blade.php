@@ -29,7 +29,7 @@
 
 <body>
     <section id="header">
-        <a href="{{route('home', app()->getLocale())}}" class="logo">
+        <a href="{{route('homepage', app()->getLocale())}}" class="logo">
             <img src="{{asset("assets/img/logo.png")}}" class="img-fluid" alt="" />
         </a>
         <div class="top-header">
@@ -98,7 +98,7 @@
                         @if (count($menus) > 0)
                         @foreach ($menus as $menu)
                         <li class="{{count($menu->submenus) > 0 ? 'd' : ''}}">
-                            <a class="main-link" href="../{{$menu->slug_en}}"
+                            <a class="main-link" href="{{route($menu->slug_en,app()->getLocale())}}"
                                 title="Click Here to go Retail Page">
                                 @if ($Bn)
                                 {{$menu->name_bn}}
@@ -108,7 +108,7 @@
                                 @if (count($menu->submenus))
                                 <div class="dropdown" style="z-index: 500">
                                     @foreach ($menu->submenus as $submenu)
-                                    <a class="dropdown-item" href="../{{$menu->slug_en}}/{{$submenu->slug_en}}">
+                                <a class="dropdown-item" href="{{route($menu->slug_en,app()->getLocale())}}/{{$submenu->slug_en}}">
                                         @if ($Bn)
                                         {{$submenu->name_bn}}
                                         @else

@@ -104,7 +104,7 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
 
     Route::get('/', function(){
         return view("pages.home.index");
-    });
+    })->name('homepage');
 
     Route::get('/retail', function(){
         return view("pages.retail.index");
@@ -203,6 +203,9 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
 
     // Retails Single Page
     Route::get('retail/{plan}','ReatilFrontController@showPlan');
+
+    Route::get('retail/{plan}/{list}','ReatilFrontController@showPlanList');
+    
     Route::get('/savings', function(){
         return view("pages.retailSinglePage.savings.index");
     })->name("savings");
