@@ -29,7 +29,7 @@
 
 <body>
     <section id="header">
-        <a href="{{route('home', app()->getLocale())}}" class="logo">
+        <a href="{{route('glil.home', app()->getLocale())}}" class="logo">
             <img src="{{asset("assets/img/logo.png")}}" class="img-fluid" alt="" />
         </a>
         <div class="top-header">
@@ -72,33 +72,11 @@
                 <div class="row">
                     <div class="col-12 text-right">
 
-                        {{-- @foreach(__('header.headerMenu') as $headerMenu)
-                            <li class="d">
-                                <a
-                                    class="main-link"
-                                    href="{{$headerMenu['link']}}"
-                        >
-                        {{$headerMenu['name']}}
-                        </a>
-                        </li>
-                        @endforeach --}}
-
-                        {{-- <li class="d">
-                            <a class="nav-link @if(Request::segment(1) == 'en'){{'active'}}@endif d-inline-block
-                        text-capitalize"
-                        href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'en']))}}">
-                        EN
-                        </a>
-                        <span class="d-inline-block">|</span>
-                        <a class="nav-link @if(Request::segment(1) == 'bn'){{'active'}}@endif d-inline-block text-capitalize"
-                            href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'bn']))}}">
-                            বাংলা
-                        </a>
-                        </li> --}}
                         @if (count($menus) > 0)
                         @foreach ($menus as $menu)
                         <li class="{{count($menu->submenus) > 0 ? 'd' : ''}}">
-                            <a class="main-link" href="{{route('retail', app()->getLocale())}}"
+                            <a class="main-link"
+                                href="{{$menu->slug_en != '#' || $menu->slug_en != '' ? URL::to(app()->getLocale()) . '/'. $menu->slug_en : '#'}}"
                                 title="Click Here to go Retail Page">
                                 @if ($Bn)
                                 {{$menu->name_bn}}
@@ -108,144 +86,52 @@
                                 @if (count($menu->submenus))
                                 <div class="dropdown" style="z-index: 500">
                                     @foreach ($menu->submenus as $submenu)
-                                    <a class="dropdown-item" href="{{route('savings', app()->getLocale())}}">
+                                    <a class="dropdown-item"
+                                        href="{{$submenu->slug_en != '#' || $submenu->slug_en != '' ? URL::to(app()->getLocale()) . '/'. $submenu->slug_en : '#'}}">
                                         @if ($Bn)
-                                        {{$submenu->name_bn}}
+                                        {{$submenu->slug_en}}
                                         @else
-                                        {{$submenu->name_en}}
+                                        {{$submenu->slug_en}}
                                         @endif
                                     </a>
                                     @endforeach
                                 </div>
                                 @endif
 
-                                {{-- <div class="dropdown" style="z-index: 500">
-                                    <a class="dropdown-item" href="{{route('savings', app()->getLocale())}}">
-                                Savings
-                            </a>
-                            <a class="dropdown-item" href="{{route('earlyCash', app()->getLocale())}}">
-                                Early Cash
-                            </a>
-                            <a class="dropdown-item" href="{{route('children', app()->getLocale())}}">
-                                Children
-                            </a>
-                            <a class="dropdown-item" href="{{route('retirement', app()->getLocale())}}">
-                                Retirements
-                            </a>
-                            <a class="dropdown-item" href="{{route('investment', app()->getLocale())}}">
-                                Investment
-                            </a>
-                            <a class="dropdown-item" href="{{route('supplymentary', app()->getLocale())}}">
-                                Supplementary Benifits
-                            </a>
-                    </div> --}}
-                    </a>
-                    </li>
-                    @endforeach
-                    @endif
 
+                            </a>
+                        </li>
+                        @endforeach
+                        @endif
 
+                        <li class="line">
+                            <img src={{asset("assets/img/line.png")}} class="img-fluid" alt="" />
+                        </li>
+                        <button class="img-btn btn1">
+                            <img src={{asset("assets/img/easylife.png")}} class="img-fluid" alt="" />
+                        </button>
+                        <button class="img-btn btn-gurdian">
+                            <img src={{asset("assets/img/mygurdian.png")}} class="img-fluid" alt="" />
+                        </button>
 
-                    {{-- 
                         <li class="d">
-                            <a class="main-link" href="{{route('corporate', app()->getLocale())}}"
-                    title="Click Here to go Corporate Page">
-                    Corporate
-                    <div class="dropdown dropdown2" style="z-index: 500">
-                        <a class="dropdown-item" href="{{route('groupTermLife', app()->getLocale())}}">
-                            Group Term Life
-                        </a>
-                        <a class="dropdown-item" href="{{route('criticalIllnessBenefit', app()->getLocale())}}">
-                            Critical Illness Benefit
-                        </a>
-                        <a class="dropdown-item" href="{{route('groupMedical', app()->getLocale())}}">
-                            Group Medical Insurance Plan
-                        </a>
-                        <a class="dropdown-item" href="{{route('groupPersonal', app()->getLocale())}}">
-                            Group Personal Accident Benefit
-                        </a>
+                            <a href="#" class="main-link">
+                                <i class="fas fa-search" onclick="myFunction()">
+                                </i>
+                                <div id="dropdowns" class="dropdowns" style="z-index: 20000; right: 1%">
+                                    <div class="dropdown-item">
+                                        <form action="" class="d-flex">
+                                            <input type="text" class="form-control" placeholder="Search">
+                                            <button type="submit" class="btn yellow-btn ml-4">Search</button>
+                                            <i onclick="myFunctiontwo()" class="fas fa-times ml-3"></i>
+                                        </form>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
                     </div>
-                    </a>
-                    </li>
-
-                    <li>
-                        <a class="main-link" href="{{route('bancassurance', app()->getLocale())}}">
-                            Bancassurance
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="main-link" href="{{route('microinsurance', app()->getLocale())}}">
-                            Micro Insurance
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="main-link" href="{{route('claims', app()->getLocale())}}">
-                            Claims
-                        </a>
-                    </li> --}}
-
-                    {{-- <li class="about-us">
-                            <a class="main-link" href="{{route('aboutUs', app()->getLocale())}}">
-                    About Us
-                    </a>
-                    </li> --}}
-
-                    {{-- <li class="d">
-                            <a class="main-link" href="#">
-                                More
-                                <div class="dropdown more-options" style="z-index: 500">
-                                    <a class="dropdown-item" href="{{route('aboutUs', app()->getLocale())}}">
-                    About Us
-                    </a>
-                    <a class="dropdown-item" href="{{route('mediaCorner', app()->getLocale())}}">
-                        Media Corner
-                    </a>
-                    <a class="dropdown-item" href="{{route('financials', app()->getLocale())}}">
-                        Financials
-                    </a>
-                    <a class="dropdown-item" href="{{route('newsLetter', app()->getLocale())}}">
-                        Newsletter
-                    </a>
-                    <a class="dropdown-item" href="{{route('coronaVirus', app()->getLocale())}}">
-                        Corona Virus Awareness
-                    </a>
                 </div>
-                </a>
-                </li> --}}
-
-
-                <li class="line">
-                    <img src={{asset("assets/img/line.png")}} class="img-fluid" alt="" />
-                </li>
-                <button class="img-btn btn1">
-                    <img src={{asset("assets/img/easylife.png")}} class="img-fluid" alt="" />
-                </button>
-                <button class="img-btn btn-gurdian">
-                    <img src={{asset("assets/img/mygurdian.png")}} class="img-fluid" alt="" />
-                </button>
-                {{-- <li>
-                            <i class="fas fa-search"></i>
-                        </li> --}}
-                <li class="d">
-                    <a href="#" class="main-link">
-                        <i class="fas fa-search" onclick="myFunction()">
-                        </i>
-                        <div id="dropdowns" class="dropdowns" style="z-index: 20000; right: 1%">
-                            <div class="dropdown-item">
-                                <form action="" class="d-flex">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <button type="submit" class="btn yellow-btn ml-4">Search</button>
-                                    <i onclick="myFunctiontwo()" class="fas fa-times ml-3"></i>
-                                </form>
-                            </div>
-                        </div>
-                    </a>
-                </li>
             </div>
-        </div>
-        </div>
         </div>
     </section>
 
@@ -289,7 +175,7 @@
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
-            <a class="navbar-brand" href="{{route('home', app()->getLocale())}}">
+            <a class="navbar-brand" href="{{route('glil.home', app()->getLocale())}}">
                 <img src="{{asset("assets/img/logo.png")}}" class="img-fluid" alt="" />
             </a>
 
@@ -300,19 +186,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
 
-                    {{-- <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            
-                        >
-                            Retail
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="!#">
-                            Corporate
-                        </a>
-                    </li> --}}
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{route('retail', app()->getLocale())}}"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -425,24 +299,23 @@
     <div id="social-sidebar">
         {{-- Book Appointment  --}}
         <ul>
-            {{-- <li><a href="{{route('bookAppointment', app()->getLocale())}}" class="transform"><span>বাংলা</span></a>
-            </li> --}}
-            <li>
-                @if (app()->getLocale() == 'bn')
-                <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'en']))}}"
-                    class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
-                    data-placement="left" title="Bangla">
-                    <span style="right:0px">EN</span>
-                </a>
-                @elseif (app()->getLocale() == 'en')
-                <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'bn']))}}"
-                    class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
-                    data-placement="left" title="Bangla">
-                    <span>বাংলা</span>
-                </a>
-                @endif
 
-            </li>
+            {{-- <li>
+                @if ($Bn)
+                <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'en']))}}"
+            class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
+            data-placement="left" title="Bangla">
+            <span style="right:0px">EN</span>
+            </a>
+            @else
+            <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'bn']))}}"
+                class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
+                data-placement="left" title="Bangla">
+                <span>বাংলা</span>
+            </a>
+            @endif
+
+            </li> --}}
             <li><a href="#" class="entypo-self" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
                     data-placement="left" title="Premium Calculator"><img src={{asset('assets/img/calculate.png')}}
                         alt=""><span><i></i></span></a></li>

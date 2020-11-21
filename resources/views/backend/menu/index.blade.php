@@ -109,6 +109,17 @@
                                                     class="form-control bg-light" type="text" name="orders"
                                                     placeholder="Enter Menu Name in Bangla">
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="slug_en">Menu Path Name (en)</label>
+                                                <input id="slug_en" class="form-control bg-light" type="text"
+                                                    name="slug_en" value="{{ $menu->slug_en }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="slug_bn">Menu Path Name (bn)</label>
+                                                <input id="slug_bn" class="form-control bg-light" type="text"
+                                                    name="slug_bn" value="{{ $menu->slug_bn }}">
+                                            </div>
                                             <div class="form-group">
                                                 <label for="status">Status</label>
                                                 <select class="form-control" id="status" name="status">
@@ -159,6 +170,16 @@
                         <label for="name_bn">Menu Name (bn)</label>
                         <input id="name_bn" class="form-control bg-light" type="text" name="name_bn"
                             placeholder="Enter Menu Name in Bangla">
+                    </div>
+                    <div class="form-group">
+                        <label for="slug_en">Menu Path Name (en)</label>
+                        <input id="slug_en" class="form-control bg-light" type="text" name="slug_en"
+                            value="{{ old('slug_en') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="slug_bn">Menu Path Name (bn)</label>
+                        <input id="slug_bn" class="form-control bg-light" type="text" name="slug_bn"
+                            value="{{ old('slug_bn') }}">
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>

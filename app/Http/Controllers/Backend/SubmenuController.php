@@ -21,22 +21,31 @@ class SubmenuController extends Controller
         return view('backend.menu.submenu', compact('menus', 'submenus'));
     }
 
-    public function store () 
+    public function store (Request $request) 
     {
-        $data = request()->validate([
+        $validate = request()->validate([
             'name_en'   => 'required',
             'menu_id'   => 'required',
             'name_bn'   => 'required',
             'status'    => 'required',
         ]);
 
-        Submenu::create($data);
-        return back()->with('success', 'Submenu Created Successfully');
+        if(! $validate) return redirect()->back()->with('error', 'Please try again');
+
+        $submenu = new Submenu;
+        $submenu->menu_id = $request->menu_id;
+        $submenu->name_en = $request->name_en;
+        $submenu->name_bn = $request->name_bn;
+        $submenu->slug_en = $request->slug_en;
+        $submenu->slug_bn = $request->slug_bn;
+        $submenu->status = $request->status;
+        $submenu->save();
+        return redirect()->back()->with('success', 'Submenu Created Successfully');
     }
 
     public function edit (Request $request)
     {
-        $data = request()->validate([
+        $validate = request()->validate([
             'name_en'   => 'required',
             'menu_id'   => 'required',
             'name_bn'   => 'required',
@@ -44,8 +53,18 @@ class SubmenuController extends Controller
             'status'    => 'required',
         ]);
 
-        Submenu::where('id', $request->id)->update($data);
-        return redirect()->back()->with('success', 'Submenu Updated Successfully');
+        if(! $validate) return redirect()->back()->with('error', 'Please try again');
+
+        $submenu = Submenu::findOrFail($request->id);
+        $submenu->menu_id = $request->menu_id;
+        $submenu->name_en = $request->name_en;
+        $submenu->name_bn = $request->name_bn;
+        $submenu->orders = $request->orders;
+        $submenu->slug_en = $request->slug_en;
+        $submenu->slug_bn = $request->slug_bn;
+        $submenu->status = $request->status;
+        $submenu->update();
+        return redirect()->back()->with('success', 'Submenu Update Successfully');
     }
 
     public function destroy ($id)

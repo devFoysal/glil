@@ -69,7 +69,110 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
         Route::get('edit/{id}', 'NewsblogController@edit')->name('newsblog.edit');
         Route::post('update', 'NewsblogController@update')->name('newsblog.update');
         Route::get('destroy/{id}', 'NewsblogController@destroy')->name('newsblog.destroy');
-    });    
+    }); 
+    
+    // More menu items
+    Route::group(['prefix' => 'aboutus'], function(){
+        Route::group(['prefix' => 'who-we-are'], function(){
+            Route::get('/', 'AboutUs\WheWeAreController@index')->name('aboutus.whoWeAre.home');
+            Route::get('/add-form', 'AboutUs\WheWeAreController@addForm')->name('aboutus.whoWeAre.addForm');
+            Route::post('/store', 'AboutUs\WheWeAreController@store')->name('aboutus.whoWeAre.store');
+            Route::get('/edit/{id}', 'AboutUs\WheWeAreController@edit')->name('aboutus.whoWeAre.edit');
+            Route::post('/update', 'AboutUs\WheWeAreController@update')->name('aboutus.whoWeAre.update');
+            Route::get('/delete/{id}', 'AboutUs\WheWeAreController@delete')->name('aboutus.whoWeAre.delete');
+        });
+        Route::group(['prefix' => 'gurdian-value'], function(){
+            // Gurdian value
+            Route::get('/add-form', 'AboutUs\WheWeAreController@addGVForm')->name('aboutus.whoWeAre.addGVForm');
+            Route::post('/store', 'AboutUs\WheWeAreController@gvStore')->name('aboutus.whoWeAre.gvStore');
+            Route::get('/edit/{id}', 'AboutUs\WheWeAreController@gvEdit')->name('aboutus.whoWeAre.gvEdit');
+            Route::post('/update', 'AboutUs\WheWeAreController@gvUpdate')->name('aboutus.whoWeAre.gvUpdate');
+            Route::get('/delete/{id}', 'AboutUs\WheWeAreController@gvDelete')->name('aboutus.whoWeAre.gvDelete');
+        });
+        Route::group(['prefix' => 'our-chairman'], function(){
+            Route::get('/', 'AboutUs\OurChairmanController@index')->name('aboutus.ourChairman.home');
+            Route::get('/add-form', 'AboutUs\OurChairmanController@addForm')->name('aboutus.ourChairman.addForm');
+            Route::post('/store', 'AboutUs\OurChairmanController@store')->name('aboutus.ourChairman.store');
+            Route::get('/edit/{id}', 'AboutUs\OurChairmanController@edit')->name('aboutus.ourChairman.edit');
+            Route::post('/update', 'AboutUs\OurChairmanController@update')->name('aboutus.ourChairman.update');
+            Route::get('/delete/{id}', 'AboutUs\OurChairmanController@delete')->name('aboutus.ourChairman.delete');
+        });
+        Route::group(['prefix' => 'shareholders'], function(){
+            Route::get('/', 'AboutUs\ShareholderController@index')->name('aboutus.shareholders.home');
+            Route::get('/add-form', 'AboutUs\ShareholderController@addForm')->name('aboutus.shareholders.addForm');
+            Route::post('/store', 'AboutUs\ShareholderController@store')->name('aboutus.shareholders.store');
+            Route::get('/edit/{id}', 'AboutUs\ShareholderController@edit')->name('aboutus.shareholders.edit');
+            Route::post('/update', 'AboutUs\ShareholderController@update')->name('aboutus.shareholders.update');
+            Route::get('/delete/{id}', 'AboutUs\ShareholderController@delete')->name('aboutus.shareholders.delete');
+            // Header
+            Route::get('/edit-heading/{id}', 'AboutUs\ShareholderController@editHeading')->name('aboutus.shareholders.edit-heading');
+            Route::post('/update-heading', 'AboutUs\ShareholderController@updateHeading')->name('aboutus.shareholders.update-heading');
+        });
+        Route::group(['prefix' => 'board-of-directors'], function(){
+            Route::get('/', 'AboutUs\DirectorsController@index')->name('aboutus.boardOfDirectors.home');
+            Route::get('/add-form', 'AboutUs\DirectorsController@addForm')->name('aboutus.boardOfDirectors.addForm');
+            Route::post('/store', 'AboutUs\DirectorsController@store')->name('aboutus.boardOfDirectors.store');
+            Route::get('/edit/{id}', 'AboutUs\DirectorsController@edit')->name('aboutus.boardOfDirectors.edit');
+            Route::post('/update', 'AboutUs\DirectorsController@update')->name('aboutus.boardOfDirectors.update');
+            Route::get('/delete/{id}', 'AboutUs\DirectorsController@delete')->name('aboutus.boardOfDirectors.delete');
+
+            // Header
+            Route::get('/edit-heading/{id}', 'AboutUs\DirectorsController@editHeading')->name('aboutus.boardOfDirectors.edit-heading');
+            Route::post('/update-heading', 'AboutUs\DirectorsController@updateHeading')->name('aboutus.boardOfDirectors.update-heading');
+        });
+        Route::group(['prefix' => 'management-team'], function(){
+            Route::get('/', 'AboutUs\ManagementTeamController@index')->name('aboutus.managementTeam.home');
+            Route::get('/add-form', 'AboutUs\ManagementTeamController@addForm')->name('aboutus.managementTeam.addForm');
+            Route::post('/store', 'AboutUs\ManagementTeamController@store')->name('aboutus.managementTeam.store');
+            Route::get('/edit/{id}', 'AboutUs\ManagementTeamController@edit')->name('aboutus.managementTeam.edit');
+            Route::post('/update', 'AboutUs\ManagementTeamController@update')->name('aboutus.managementTeam.update');
+            Route::get('/delete/{id}', 'AboutUs\ManagementTeamController@delete')->name('aboutus.managementTeam.delete');
+
+            // Header
+            Route::get('/edit-heading/{id}', 'AboutUs\ManagementTeamController@editHeading')->name('aboutus.managementTeam.edit-heading');
+            Route::post('/update-heading', 'AboutUs\ManagementTeamController@updateHeading')->name('aboutus.managementTeam.update-heading');
+        });
+        Route::group(['prefix' => 'stuff-list'], function(){
+            Route::get('/', 'AboutUs\StuffListController@index')->name('aboutus.stuffList.home');
+            Route::get('/add-form', 'AboutUs\StuffListController@addForm')->name('aboutus.stuffList.addForm');
+            Route::post('/store', 'AboutUs\StuffListController@store')->name('aboutus.stuffList.store');
+            Route::get('/edit/{id}', 'AboutUs\StuffListController@edit')->name('aboutus.stuffList.edit');
+            Route::post('/update', 'AboutUs\StuffListController@update')->name('aboutus.stuffList.update');
+            Route::get('/delete/{id}', 'AboutUs\StuffListController@delete')->name('aboutus.stuffList.delete');
+        });
+        Route::group(['prefix' => 'mission-vision'], function(){
+            Route::get('/', 'AboutUs\MissionVisionController@index')->name('aboutus.missionVision.home');
+            Route::get('/add-form', 'AboutUs\MissionVisionController@addForm')->name('aboutus.missionVision.addForm');
+            Route::post('/store', 'AboutUs\MissionVisionController@store')->name('aboutus.missionVision.store');
+            Route::get('/edit/{id}', 'AboutUs\MissionVisionController@edit')->name('aboutus.missionVision.edit');
+            Route::post('/update', 'AboutUs\MissionVisionController@update')->name('aboutus.missionVision.update');
+            Route::get('/delete/{id}', 'AboutUs\MissionVisionController@delete')->name('aboutus.missionVision.delete');
+        });
+        Route::group(['prefix' => 'citizen-charter'], function(){
+            Route::get('/', 'AboutUs\CitizenCharterController@index')->name('aboutus.citizenCharter.home');
+            Route::get('/add-form', 'AboutUs\CitizenCharterController@addForm')->name('aboutus.citizenCharter.addForm');
+            Route::post('/store', 'AboutUs\CitizenCharterController@store')->name('aboutus.citizenCharter.store');
+            Route::get('/edit/{id}', 'AboutUs\CitizenCharterController@edit')->name('aboutus.citizenCharter.edit');
+            Route::post('/update', 'AboutUs\CitizenCharterController@update')->name('aboutus.citizenCharter.update');
+            Route::get('/delete/{id}', 'AboutUs\CitizenCharterController@delete')->name('aboutus.citizenCharter.delete');
+        });
+        Route::group(['prefix' => 'core-values'], function(){
+            Route::get('/', 'AboutUs\CoreValuesController@index')->name('aboutus.coreValues.home');
+            Route::get('/add-form', 'AboutUs\CoreValuesController@addForm')->name('aboutus.coreValues.addForm');
+            Route::post('/store', 'AboutUs\CoreValuesController@store')->name('aboutus.coreValues.store');
+            Route::get('/edit/{id}', 'AboutUs\CoreValuesController@edit')->name('aboutus.coreValues.edit');
+            Route::post('/update', 'AboutUs\CoreValuesController@update')->name('aboutus.coreValues.update');
+            Route::get('/delete/{id}', 'AboutUs\CoreValuesController@delete')->name('aboutus.coreValues.delete');
+        });
+        Route::group(['prefix' => 'milestone'], function(){
+            Route::get('/', 'AboutUs\MilestoneController@index')->name('aboutus.milestone.home');
+            Route::get('/add-form', 'AboutUs\MilestoneController@addForm')->name('aboutus.milestone.addForm');
+            Route::post('/store', 'AboutUs\MilestoneController@store')->name('aboutus.milestone.store');
+            Route::get('/edit/{id}', 'AboutUs\MilestoneController@edit')->name('aboutus.milestone.edit');
+            Route::post('/update', 'AboutUs\MilestoneController@update')->name('aboutus.milestone.update');
+            Route::get('/delete/{id}', 'AboutUs\MilestoneController@delete')->name('aboutus.milestone.delete');
+        });
+    }); 
 });
 
 
@@ -79,7 +182,7 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
 
     Route::get('/', function(){
         return view("pages.home.index");
-    });
+    })->name('glil.home');
 
     Route::get('/retail', function(){
         return view("pages.retail.index");
@@ -101,9 +204,7 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
         return view("pages.bancassurance.index");
     })->name("bancassurance");   
 
-    Route::get('/about-us', function(){
-        return view("pages.aboutUs.index");
-    })->name("aboutUs");
+    Route::get('/about-us', 'GLILController@aboutUs')->name("aboutUs");
 
     Route::get('/book-appointment', function(){
         return view("pages.bookAppointment.index");
