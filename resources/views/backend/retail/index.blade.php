@@ -55,7 +55,7 @@
     <tr>
         <td>{{ $index + 1 }}</td>
         <td>
-            <img src="{{ asset('uploads/'.$plan->banner) }}" alt="" class="img-fluid" width="100">
+            <img src="{{ asset('uploads/retail/'.$plan->banner) }}" alt="" class="img-fluid" width="100">
         </td>
         <td>{{ $plan->name_en }}</td>
         <td>{{ $plan->name_bn }}</td>
@@ -64,7 +64,7 @@
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="{{ route('retail.plan.edit', ['id'=>$plan->id]) }}">Edit</a>
-                <a class="dropdown-item" href="{{route('retail.planlist.index')}}"  target="_blank">Plan List</a>
+                <a class="dropdown-item" href="{{route('retail.planlist.index',['planId' => $plan->id])}}"  target="_blank">Plan List</a>
 
 
                     <a class="dropdown-item" href="{{ route('retail.plan.destroy', ['id'=>$plan->id]) }}">Delete</a>

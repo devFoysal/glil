@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Validation\Rules\Unique;
 
 class CreateRetailPlansTable extends Migration
 {
@@ -15,7 +16,8 @@ class CreateRetailPlansTable extends Migration
     {
         Schema::create('retail_plans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name_en');
+            $table->string('slug')->unique();
+            $table->string('name_en')->unique();
             $table->string('name_bn')->nullable();
             $table->string('banner');
             $table->timestamps();

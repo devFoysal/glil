@@ -35,12 +35,13 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
     Route::put('/retail-plan/update', 'RetailPlanController@update')->name('retail.plan.update');
     Route::get('/retail-plan/{id}/destroy', 'RetailPlanController@destroy')->name('retail.plan.destroy');
 
-
-    Route::get('/retail-planlist/', 'RetailPlanController@index')->name('retail.planlist.index');
-    Route::post('/retail-planlist/add', 'RetailPlanController@store')->name('retail.planlist.add');
-    Route::get('/retail-planlist/edit/{id}', 'RetailPlanController@edit')->name('retail.planlist.edit');
-    Route::put('/retail-planlist/{id}', 'RetailPlanController@update')->name('retail.planlist.update');
-    Route::get('/retail-planlist/{id}/destroy', 'RetailPlanController@destroy')->name('retail.planlist.destroy');
+    // Retail Plan List Route 
+    Route::get('/retail-planlist/{planId}/', 'RetailPlanListController@index')->name('retail.planlist.index');
+    Route::get('/retail-planlist/{planId}/create', 'RetailPlanListController@create')->name('retail.planlist.create');
+    Route::post('/retail-planlist/{planId}/add', 'RetailPlanListController@store')->name('retail.planlist.add');
+    Route::get('/retail-planlist/edit/{id}', 'RetailPlanListController@edit')->name('retail.planlist.edit');
+    Route::put('/retail-planlist/{id}', 'RetailPlanListController@update')->name('retail.planlist.update');
+    Route::get('/retail-planlist/{id}/destroy', 'RetailPlanListController@destroy')->name('retail.planlist.destroy');
 
 
 
