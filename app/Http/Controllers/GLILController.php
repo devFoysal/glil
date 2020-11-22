@@ -20,6 +20,11 @@ use App\Models\AboutUs\ManagementTeam;
 use App\Models\AboutUs\ManagementTeamHeading;
 use App\Models\AboutUs\MissionVision;
 use App\Models\AboutUs\CoreValues;
+use App\Models\AboutUs\About;
+use App\Models\AboutUs\Video;
+use App\Models\AboutUs\CitizenCharter;
+use App\Models\AboutUs\StuffList;
+use App\Models\AboutUs\Milestone;
 
 class GLILController extends Controller
 {
@@ -51,6 +56,11 @@ class GLILController extends Controller
         $mtHeading = ManagementTeamHeading::first();
         $missionVision = MissionVision::first();
         $coreValues = CoreValues::first();
+        $aboutUs = About::first();
+        $citizenCharter = CitizenCharter::first();
+        $stuffList = StuffList::first();
+        $milestone = Milestone::first();
+        $videos = Video::where(['status' => 1])->get();
         return view("pages.aboutUs.index", compact([
             'whoWeAres', 
             'guardianValies',
@@ -63,6 +73,11 @@ class GLILController extends Controller
             'mtHeading',
             'missionVision',
             'coreValues',
+            'aboutUs',
+            'videos',
+            'citizenCharter',
+            'stuffList',
+            'milestone',
         ]));
     }
 }

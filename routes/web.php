@@ -73,6 +73,9 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
     
     // More menu items
     Route::group(['prefix' => 'aboutus'], function(){
+        Route::get('/', 'AboutUs\AboutController@index')->name('aboutus.about.home');
+        Route::get('/edit/{id}', 'AboutUs\AboutController@edit')->name('aboutus.about.edit');
+        Route::post('/update', 'AboutUs\AboutController@update')->name('aboutus.about.update');
         Route::group(['prefix' => 'who-we-are'], function(){
             Route::get('/', 'AboutUs\WheWeAreController@index')->name('aboutus.whoWeAre.home');
             Route::get('/add-form', 'AboutUs\WheWeAreController@addForm')->name('aboutus.whoWeAre.addForm');

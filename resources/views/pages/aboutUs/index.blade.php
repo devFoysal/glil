@@ -2,21 +2,22 @@
 @section("title", "About Us")
 @section("content")
 
-<section id="banner-no-text" style="background-image: url({{asset("assets/img/about/bannerbg.png")}})"></section>
+
+<section id="banner-no-text" style="background-image: url({{asset("uploads/aboutus/$aboutUs->banner")}})"></section>
 
 <section id="counter">
     <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-md-3 box">
-                <h5>1.1 Crore</h5>
+                <h5>{{$aboutUs->livesCovered}}</h5>
                 <p>Lives Covered</p>
             </div>
             <div class="col-md-3 box2">
-                <h5>BDT 400+ Crore</h5>
+                <h5>{{$aboutUs->paidInClaims}}</h5>
                 <p>Paid in Claims</p>
             </div>
             <div class="col-md-3 box3">
-                <h5>97%</h5>
+                <h5>{{$aboutUs->claimPayoutRatio}}</h5>
                 <p>Claim Payout Ratio</p>
             </div>
         </div>
@@ -51,7 +52,8 @@
                             <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active" id="v-pills-home-tab1" data-toggle="pill" href="#v-pills-1"
                                     role="tab" aria-controls="#v-pills-1" aria-selected="true">
-                                    Who We Are <span></span>
+                                    Who We Are
+                                    <span></span>
                                 </a>
                                 <a class="nav-link" id="v-pills-home-tab2" data-toggle="pill" href="#v-pills-2"
                                     role="tab" aria-controls="#v-pills-2" aria-selected="true">
@@ -324,8 +326,21 @@
                                     <div style="height: 650px">
                                         <div class="col d-flex align-items-center justify-content-center h-100"
                                             style="flex-direction: column">
-                                            <p><strong>Guardian Life Insurance Limited Staff List</strong></p>
-                                            <a href="">Click Here to Download</a>
+                                            <div>
+                                                @if ($Bn)
+                                                {!!$stuffList->description_bn!!}
+                                                @else
+                                                {!!$stuffList->description_en!!}
+                                                @endif
+                                            </div>
+                                            <a href="{{asset("uploads/aboutus/$stuffList->image")}}" download
+                                                target="_blank">
+                                                @if ($Bn)
+                                                {{'ডাউনলোড করুন'}}
+                                                @else
+                                                {{'Click Here to Download'}}
+                                                @endif
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -352,7 +367,14 @@
                                             <div style="height: 650px">
                                                 <div class="col d-flex align-items-center justify-content-center h-100"
                                                     style="flex-direction: column">
-                                                    <a href="">Citizen Charter</a>
+                                                    <a href="{{asset("uploads/aboutus/$citizenCharter->files")}}"
+                                                        download target="_blank">
+                                                        @if ($Bn)
+                                                        {!!$citizenCharter->title_bn!!}
+                                                        @else
+                                                        {!!$citizenCharter->title_en!!}
+                                                        @endif
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -378,8 +400,12 @@
                                     aria-labelledby="#v-pills-10">
                                     <div class="">
                                         <div class="col">
-                                            <h2 class="mb-4">Guardian Life Milestones</h2>
-                                            <img src="{{asset("assets/img/about/milestone.png")}}" alt=""
+                                            @if ($Bn)
+                                            {!! $milestone->description_bn !!}
+                                            @else
+                                            {!! $milestone->description_en !!}
+                                            @endif
+                                            <img src="{{asset("uploads/aboutus/$milestone->image")}}" alt=""
                                                 class="img-fluid">
                                         </div>
                                     </div>
@@ -395,45 +421,23 @@
         </div>
     </div>
 </section>
-
+@if (count($videos) > 0)
 <section id="video-section">
     <div class="container">
         <div class="row text-center">
             <h5>Video Gallery</h5>
             <div class="owl-carousel owl-theme">
+                @foreach ($videos as $video)
                 <div class="item">
-                    <iframe src="https://www.youtube.com/embed/54ijdoYOERE" frameborder="0"
+                    <iframe src="https://www.youtube.com/embed/{{$video->video}}" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 </div>
-                <div class="item">
-                    <iframe src="https://www.youtube.com/embed/aaalVEjNrgA" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <div class="item">
-                    <iframe src="https://www.youtube.com/embed/NOnWUHs5ZtA" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <div class="item">
-                    <iframe width="360" height="203" src="https://www.youtube.com/embed/54ijdoYOERE" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <div class="item">
-                    <iframe width="360" height="203" src="https://www.youtube.com/embed/aaalVEjNrgA" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <div class="item">
-                    <iframe width="360" height="203" src="https://www.youtube.com/embed/NOnWUHs5ZtA" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
 </section>
-
+@endif
 @endsection

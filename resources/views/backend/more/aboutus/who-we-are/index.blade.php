@@ -19,8 +19,6 @@
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <div class="card-title">Who We Are</div>
-                <a href="{{route('aboutus.whoWeAre.addForm')}}" class="btn btn-success btn-icon m-2"><i
-                        class="fas fa-plus-square"></i>&nbsp; Add Who We Are</a>
             </div>
             @if(session('success'))
             <div class="alert alert-card alert-success" role="alert">
@@ -77,8 +75,6 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item"
                                             href="{{route('aboutus.whoWeAre.edit', $weare->id)}}">Edit</a>
-                                        <a class="dropdown-item"
-                                            href="{{ route('aboutus.whoWeAre.delete', ['id'=>$weare->id]) }}">Delete</a>
                                     </div>
                                 </div>
                             </td>
