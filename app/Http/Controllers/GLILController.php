@@ -7,6 +7,24 @@ use Illuminate\Http\Request;
 // Models
 use App\Models\Newsblog;
 
+// Who we are
+use App\Models\AboutUs\WhoWeAre;
+use App\Models\AboutUs\GuardianValies;
+use App\Models\AboutUs\ChairmanSpeech;
+use App\Models\AboutUs\ShareHolder;
+use App\Models\AboutUs\ShareholderHeading;
+use App\Models\AboutUs\Director;
+use App\Models\AboutUs\DirectorHeading;
+
+use App\Models\AboutUs\ManagementTeam;
+use App\Models\AboutUs\ManagementTeamHeading;
+use App\Models\AboutUs\MissionVision;
+use App\Models\AboutUs\CoreValues;
+use App\Models\AboutUs\About;
+use App\Models\AboutUs\Video;
+use App\Models\AboutUs\CitizenCharter;
+use App\Models\AboutUs\StuffList;
+use App\Models\AboutUs\Milestone;
 
 class GLILController extends Controller
 {
@@ -21,5 +39,45 @@ class GLILController extends Controller
         $blog->views = $blog->views + 1;
         $blog->update();
         return view("pages.blog.detail", compact('blog', 'recentBlogs'));
+    }
+
+
+    // More menu items
+    public function aboutUs(){
+        $whoWeAres = WhoWeAre::where(['status' => 1])->take(1)->orderBy('id', 'asc')->first();
+        $guardianValies = GuardianValies::where(['status' => 1])->orderBy('id', 'desc')->get();
+        $chairmanSpeech = ChairmanSpeech::where(['status' => 1])->take(1)->orderBy('id', 'asc')->first();
+        $shareholders = ShareHolder::where(['status' => 1])->orderBy('orders', 'asc')->get();
+        $shareholderHeading = ShareholderHeading::first();
+        $directors = Director::where(['status' => 1])->orderBy('orders', 'asc')->get();
+        $directorHeading = DirectorHeading::first();
+
+        $mTeams = ManagementTeam::where(['status' => 1])->orderBy('orders', 'asc')->get();
+        $mtHeading = ManagementTeamHeading::first();
+        $missionVision = MissionVision::first();
+        $coreValues = CoreValues::first();
+        $aboutUs = About::first();
+        $citizenCharter = CitizenCharter::first();
+        $stuffList = StuffList::first();
+        $milestone = Milestone::first();
+        $videos = Video::where(['status' => 1])->get();
+        return view("pages.aboutUs.index", compact([
+            'whoWeAres', 
+            'guardianValies',
+            'chairmanSpeech',
+            'shareholders',
+            'shareholderHeading',
+            'directors',
+            'directorHeading',
+            'mTeams',
+            'mtHeading',
+            'missionVision',
+            'coreValues',
+            'aboutUs',
+            'videos',
+            'citizenCharter',
+            'stuffList',
+            'milestone',
+        ]));
     }
 }
