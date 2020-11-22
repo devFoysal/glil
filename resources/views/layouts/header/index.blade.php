@@ -300,22 +300,22 @@
         {{-- Book Appointment  --}}
         <ul>
 
-            {{-- <li>
+            <li>
                 @if ($Bn)
                 <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'en']))}}"
-            class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
-            data-placement="left" title="Bangla">
-            <span style="right:0px">EN</span>
-            </a>
-            @else
-            <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'bn']))}}"
-                class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
-                data-placement="left" title="Bangla">
-                <span>বাংলা</span>
-            </a>
-            @endif
+                    class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
+                    data-placement="left" title="Bangla">
+                    <span style="right:0px">EN</span>
+                </a>
+                @else
+                <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'bn']))}}"
+                    class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
+                    data-placement="left" title="Bangla">
+                    <span>বাংলা</span>
+                </a>
+                @endif
 
-            </li> --}}
+            </li>
             <li><a href="#" class="entypo-self" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
                     data-placement="left" title="Premium Calculator"><img src={{asset('assets/img/calculate.png')}}
                         alt=""><span><i></i></span></a></li>
