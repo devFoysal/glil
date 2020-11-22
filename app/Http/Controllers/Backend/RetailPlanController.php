@@ -6,6 +6,7 @@ use App\Http\Traits\ImageHandleTraits;
 use App\Http\Traits\ResponseTrait;
 use App\Models\RetailPlan;
 use Illuminate\Http\Request;
+use Str;
 
 class RetailPlanController extends Controller
 {
@@ -20,16 +21,17 @@ class RetailPlanController extends Controller
 
     // Validation Data
         $request->validate([
-            'name_en'        => 'required',
+            'name_en'        => 'required|unique:retail_plans,name_en',
             'banner'           => 'required|image|mimes:jpeg,jpg,png',
            
         ]);
 
         
         $plan = new RetailPlan();
+        $plan->slug = Str::slug($request->name_en,'-');
         $plan->name_en = $request->name_en;
         $plan->name_bn = $request->name_bn;
-        $plan->banner = $this->uploadImage($request->banner,'uploads/');
+        $plan->banner = $this->uploadImage($request->banner,'uploads/retail/');
         if($plan->save()) {
             return redirect(route('retail.index'))->with('success', 'Retail Plan Created Successfully');
         } 
@@ -49,7 +51,7 @@ class RetailPlanController extends Controller
 
         // Validation Data
         $request->validate([
-            'name_en'        => 'required',
+            'name_en'        => 'required|unique:retail_plans,name_en,'.$retailPlan->id,
             'banner'           => 'sometimes|image|mimes:jpeg,jpg,png',
            
         ]);
@@ -61,7 +63,7 @@ class RetailPlanController extends Controller
             if (!empty($retailPlan->banner)) {
                 $this->deleteImage($retailPlan->banner);
             }
-            $retailPlan->banner =    $this->uploadImage($request->file('banner'), 'uploads/');
+            $retailPlan->banner =    $this->uploadImage($request->file('banner'), 'uploads/retail/');
         }
 
         $retailPlan->save();
@@ -74,7 +76,7 @@ class RetailPlanController extends Controller
             $plan = RetailPlan::find($id);
 
             if(!empty($plan->banner)) {
-                $this->deleteImage($plan->banner, 'uplaods/');
+                $this->deleteImage($plan->banner, 'retail');
                 
             }
 
