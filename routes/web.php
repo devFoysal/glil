@@ -66,16 +66,6 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
     Route::get('/submenu/{id}/destroy', 'SubmenuController@destroy')->name('submenu.destroy');
 
 
-    // // Tab Menu Routes
-    // Route::get('/tabmenu', 'TabmenuController@index');
-
-    // Route::post('/tabmenu/store', 'TabmenuController@store')->name('tabmenu.store');
-
-    // Route::post('/tabmenu/edit', 'TabmenuController@edit')->name('tabmenu.edit');
-
-    // Route::get('/tabmenu/{id}/destroy', 'TabmenuController@destroy')->name('tabmenu.destroy');
-
-
     // Home Page Banner
     Route::get('/homepagebanner', 'HomepagebannerController@index');
 
@@ -95,6 +85,23 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
         Route::post('update', 'NewsblogController@update')->name('newsblog.update');
         Route::get('destroy/{id}', 'NewsblogController@destroy')->name('newsblog.destroy');
     }); 
+
+        // More menu items
+        Route::group(['prefix' => 'claims'], function(){
+            Route::get('/', 'Claims\ClaimController@index')->name('claims.claim.home');
+            Route::get('/edit/', 'Claims\ClaimController@edit')->name('claims.claim.edit');
+            Route::put('/update', 'Claims\ClaimController@update')->name('claims.claim.update');
+        Route::group(['prefix' => 'overview'], function(){
+            Route::get('/edit/', 'Claims\OverViewController@edit')->name('claims.overview.edit');
+            Route::put('/update', 'Claims\OverViewController@update')->name('claims.overview.update');
+        });
+
+        Route::group(['prefix' => 'claimSubmission'], function(){
+            Route::get('/edit/', 'Claims\claimSubmissionController@edit')->name('claims.claimSubmission.edit');
+            Route::put('/update', 'Claims\claimSubmissionController@update')->name('claims.claimSubmission.update');
+        });
+
+        });
     
     // More menu items
     Route::group(['prefix' => 'aboutus'], function(){

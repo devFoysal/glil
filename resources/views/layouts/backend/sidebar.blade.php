@@ -57,6 +57,38 @@
 
                 <li class="side-menu-item px-3"><a href="{{ url('admin/retail') }}" class="w-100 py-3 pl-4">Retail</a></li>
 
+
+                 <!-- Claim -->
+                 <li class="side-menu-item px-3">
+                    <a href="#" class="w-100 py-3 pl-4 sub-menu-parent" data-toggle="collapse" data-target="#sub_menu_3"
+                        aria-expanded="false" aria-controls="sub_menu_3">
+                        Claims
+                    </a>
+                </li>
+                <div id="sub_menu_3" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <ul class="side-sub-menu p-0">
+                        <li class="side-sub-menu-item px-3">
+                            <a href="{{ route('claims.claim.home') }}" class="w-100 pl-4">
+                                Home 
+                            </a>
+                        </li>
+                        <li class="side-sub-menu-item px-3">
+                            <a href="{{ route('claims.overview.edit') }}" class="w-100 pl-4">
+                                Overview
+                            </a>
+                        </li>
+
+                        <li class="side-sub-menu-item px-3">
+                            <a href="{{ route('claims.claimSubmission.edit') }}" class="w-100 pl-4">
+                                Claim Submission
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
                 <hr>
                 <h5 class="text-white px-3">More</h5>
                 <hr>
