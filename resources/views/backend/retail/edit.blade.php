@@ -130,7 +130,7 @@
 
                 <div class="row mb-3"> 
                     <div class="col-md-4">
-                        <img src="{{ asset('uploads/'.$retail[0]->banner) }}" alt="" class="img-fluid" width="150">
+                        <img src="{{ asset('uploads/retail/'.$retail[0]->banner) }}" alt="" class="img-fluid" width="150">
                     </div>
                     
                 </div>
