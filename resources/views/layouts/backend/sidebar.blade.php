@@ -155,6 +155,16 @@
                         </li>
                     </ul>
                 </div>
+                <li class="side-menu-item px-3">
+                    <a href="{{ route('videos.home') }}" class="w-100 py-3 pl-4">
+                        Video
+                    </a>
+                </li>
+                <li class="side-menu-item px-3">
+                    <a href="{{ route('newsletter.home') }}" class="w-100 py-3 pl-4">
+                        Newsletter
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

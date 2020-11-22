@@ -2,10 +2,7 @@
 @section("title", "Corona Virus Awareness")
 @section("content")
 
-<section
-    id="banner-no-text"
-    style="background-image: url({{asset("assets/img/about/bannerbg.png")}})"
-></section>
+<section id="banner-no-text" style="background-image: url({{asset("assets/img/about/bannerbg.png")}})"></section>
 
 {{-- <section id="counter">
     <div class="container">
@@ -47,99 +44,68 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                
+
                 <div class="left-side">
                     <div class="row mx-0">
                         <div class="col-md-3 blue-bg">
-                            <div
-                                class="nav flex-column"
-                                id="v-pills-tab"
-                                role="tablist"
-                                aria-orientation="vertical"
-                            >
-                                <a
-                                    class="nav-link active"
-                                    id="v-pills-home-tab1"
-                                    data-toggle="pill"
-                                    href="#v-pills-1"
-                                    role="tab"
-                                    aria-controls="#v-pills-1"
-                                    aria-selected="true"
-                                >
-                                Documents <span></span>
+                            <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active" id="v-pills-home-tab1" data-toggle="pill" href="#v-pills-1"
+                                    role="tab" aria-controls="#v-pills-1" aria-selected="true">
+                                    Documents <span></span>
                                 </a>
-                                <a
-                                    class="nav-link"
-                                    id="v-pills-home-tab2"
-                                    data-toggle="pill"
-                                    href="#v-pills-2"
-                                    role="tab"
-                                    aria-controls="#v-pills-2"
-                                    aria-selected="true"
-                                >
-                                Videos <span></span>
+                                <a class="nav-link" id="v-pills-home-tab2" data-toggle="pill" href="#v-pills-2"
+                                    role="tab" aria-controls="#v-pills-2" aria-selected="true">
+                                    Videos <span></span>
                                 </a>
-                                
+
                             </div>
                         </div>
                         <div class="col-md-9 ash-main-bg">
-                            <div
-                                class="tab-content ash-bg"
-                                id="v-pills-tabContent"
-                                {{-- style={{ position: "relative" }} --}}
-                            >
+                            <div class="tab-content ash-bg" id="v-pills-tabContent"
+                                {{-- style={{ position: "relative" }} --}}>
                                 {{-- tab 1 --}}
-                                <div
-                                    class="tab-pane fade show active"
-                                    id="v-pills-1"
-                                    role="tabpanel"
-                                    aria-labelledby="#v-pills-1"
-                                >
-                                <div class="">
-                                    <div class="col">
-                                        <div style="height: 650px">
-                                            <div class="col d-flex align-items-center justify-content-center h-100" style="flex-direction: column">
-                                                <a href="#"><i class="fas fa-download mr-3"></i>Download</a>                                         
+                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
+                                    aria-labelledby="#v-pills-1">
+                                    <div class="">
+                                        <div class="col">
+                                            <div style="height: 650px">
+                                                <div class="col d-flex align-items-center justify-content-center h-100"
+                                                    style="flex-direction: column">
+                                                    <a href="#"><i class="fas fa-download mr-3"></i>Download</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                </div>
-    
+
                                 {{-- tab 2 --}}
-                                <div
-                                    class="tab-pane fade show"
-                                    id="v-pills-2"
-                                    role="tabpanel"
-                                    aria-labelledby="#v-pills-2"
-                                >
-                                <div class="row mx-0 border-0">
-                                    <div class="col-lg-12">
-                                        <div class="row border-0">
-                                            <div class="col-lg-4 mb-3">
-                                                <iframe src="https://www.youtube.com/embed/132bLiIiWxA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            </div>
-                                            <div class="col-lg-4 mb-3">
-                                                <iframe src="https://www.youtube.com/embed/a77zMIkyHwk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            </div>
-                                            <div class="col-lg-4 mb-3">
-                                                <iframe src="https://www.youtube.com/embed/DXin-1zecuc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            </div>
-                                            <div class="col-lg-4 mb-3">
-                                                <iframe src="https://www.youtube.com/embed/rGOT1dAklZE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <div class="tab-pane fade show" id="v-pills-2" role="tabpanel"
+                                    aria-labelledby="#v-pills-2">
+                                    @if (count($videos) > 0)
+                                    <div class="row mx-0 border-0">
+                                        <div class="col-lg-12">
+                                            <div class="row border-0">
+                                                @foreach ($videos as $video)
+                                                <div class="col-lg-4 mb-3">
+                                                    <iframe src="https://www.youtube.com/embed/{{$video->video}}"
+                                                        frameborder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowfullscreen></iframe>
+                                                </div>
+                                                @endforeach
+
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    @endif
                                 </div>
-                                </div>
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>

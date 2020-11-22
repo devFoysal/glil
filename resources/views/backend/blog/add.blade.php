@@ -29,6 +29,7 @@
                             <option selected disabled>-- Select Blog or News --</option>
                             <option value="blog" selected>Blog</option>
                             <option value="news">News</option>
+                            <option value="press">Press</option>
                         </select>
                     </div>
                     <div class="row">

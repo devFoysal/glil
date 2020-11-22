@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/en');
 Auth::routes();
 
-Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend'],function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'App\Http\Controllers\Backend'],function () {
     Route::get('/', 'HomeController@index');
 
     Route::get('/home', 'HomeController@index')->name('home');
@@ -176,6 +176,22 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
             Route::get('/delete/{id}', 'AboutUs\MilestoneController@delete')->name('aboutus.milestone.delete');
         });
     }); 
+
+    Route::group(['prefix' => 'videos'], function(){
+        Route::get('/', 'VideoController@index')->name('videos.home');
+        Route::get('/add-form', 'VideoController@addForm')->name('videos.addForm');
+        Route::post('/store', 'VideoController@store')->name('videos.store');
+        Route::get('/edit/{id}', 'VideoController@edit')->name('videos.edit');
+        Route::post('/update', 'VideoController@update')->name('videos.update');
+        Route::get('/delete/{id}', 'VideoController@delete')->name('videos.delete');
+    });
+
+    Route::group(['prefix' => 'newsletter'], function(){
+        Route::get('/', 'newsletterController@index')->name('newsletter.home');
+        Route::get('/edit/{id}', 'newsletterController@edit')->name('newsletter.edit');
+        Route::post('/update', 'newsletterController@update')->name('newsletter.update');
+        Route::get('/delete/{id}', 'newsletterController@delete')->name('newsletter.delete');
+    });
 });
 
 
@@ -315,21 +331,15 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
     })->name("groupPersonal");
 
     // more page
-    Route::get('/media-corner', function(){
-        return view("pages.mediaCorner.index");
-    })->name("mediaCorner");
+    Route::get('/media-corner', 'GLILController@mediaCorner')->name("mediaCorner");
 
     Route::get('/financials', function(){
         return view("pages.financials.index");
     })->name("financials");
 
-    Route::get('/newsletter', function(){
-        return view("pages.newsletter.index");
-    })->name("newsLetter");
+    Route::get('/newsletter', 'GLILController@newsletter')->name("newsLetter");
 
-    Route::get('/corona-virus-awareness', function(){
-        return view("pages.awareness.index");
-    })->name("coronaVirus");
+    Route::get('/corona-virus-awareness', 'GLILController@coronaVirus')->name("coronaVirus");
 
     Route::get('/supports', function(){
         return view("pages.supports.index");
@@ -346,7 +356,9 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
 
     Route::get('/csr-activities', function(){
         return view("pages.csr.index");
-    })->name("CSR");
+    })->name("CSR");    
+    
+    Route::get('/premium-calculator', 'GLILController@premiumCalculator')->name("premiumCalculator");
 
 });
 

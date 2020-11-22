@@ -2,10 +2,7 @@
 @section("title", "Newsletter")
 @section("content")
 
-<section
-    id="banner-no-text"
-    style="background-image: url({{asset("assets/img/about/bannerbg.png")}})"
-></section>
+<section id="banner-no-text" style="background-image: url({{asset("assets/img/about/bannerbg.png")}})"></section>
 
 {{-- <section id="counter">
     <div class="container">
@@ -47,89 +44,65 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                
+
                 <div class="left-side">
                     <div class="row mx-0">
                         <div class="col-md-3 blue-bg">
-                            <div
-                                class="nav flex-column"
-                                id="v-pills-tab"
-                                role="tablist"
-                                aria-orientation="vertical"
-                            >
-                                <a
-                                    class="nav-link active"
-                                    id="v-pills-home-tab1"
-                                    data-toggle="pill"
-                                    href="#v-pills-1"
-                                    role="tab"
-                                    aria-controls="#v-pills-1"
-                                    aria-selected="true"
-                                >
-                                Quarterly Newsletter English Version <span></span>
+                            <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active" id="v-pills-home-tab1" data-toggle="pill" href="#v-pills-1"
+                                    role="tab" aria-controls="#v-pills-1" aria-selected="true">
+                                    Quarterly Newsletter English Version <span></span>
                                 </a>
-                                <a
-                                    class="nav-link"
-                                    id="v-pills-home-tab2"
-                                    data-toggle="pill"
-                                    href="#v-pills-2"
-                                    role="tab"
-                                    aria-controls="#v-pills-2"
-                                    aria-selected="true"
-                                >
-                                Quarterly Newsletter In Bengali <span></span>
+                                <a class="nav-link" id="v-pills-home-tab2" data-toggle="pill" href="#v-pills-2"
+                                    role="tab" aria-controls="#v-pills-2" aria-selected="true">
+                                    Quarterly Newsletter In Bengali <span></span>
                                 </a>
-                                
+
                             </div>
                         </div>
                         <div class="col-md-9 ash-main-bg">
-                            <div
-                                class="tab-content ash-bg"
-                                id="v-pills-tabContent"
-                                {{-- style={{ position: "relative" }} --}}
-                            >
+                            <div class="tab-content ash-bg" id="v-pills-tabContent"
+                                {{-- style={{ position: "relative" }} --}}>
                                 {{-- tab 1 --}}
-                                <div
-                                    class="tab-pane fade show active"
-                                    id="v-pills-1"
-                                    role="tabpanel"
-                                    aria-labelledby="#v-pills-1"
-                                >
-                                <div class="">
-                                    <div class="col">
-                                        <div style="height: 650px">
-                                            <div class="col d-flex align-items-center justify-content-center h-100" style="flex-direction: column">
-                                                <a href="#"><i class="fas fa-download mr-3"></i>Download Newsletter</a>                                         
+                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
+                                    aria-labelledby="#v-pills-1">
+                                    <div class="">
+                                        <div class="col">
+                                            <div style="height: 650px">
+                                                <div class="col d-flex align-items-center justify-content-center h-100"
+                                                    style="flex-direction: column">
+                                                    <a target="_blank" download=""
+                                                        href="{{asset("uploads/newsletter/$newsletter->newsletter_en")}}"><i
+                                                            class="fas fa-download mr-3"></i>Download Newsletter</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                </div>
-    
+
                                 {{-- tab 2 --}}
-                                <div
-                                    class="tab-pane fade show"
-                                    id="v-pills-2"
-                                    role="tabpanel"
-                                    aria-labelledby="#v-pills-2"
-                                >
-                                <div class="">
-                                    <div class="col">
-                                        <div style="height: 650px">
-                                            <div class="col d-flex align-items-center justify-content-center h-100" style="flex-direction: column">
-                                                <a href="#"><i class="fas fa-download mr-3"></i>Download Newsletter</a>                                       
+                                <div class="tab-pane fade show" id="v-pills-2" role="tabpanel"
+                                    aria-labelledby="#v-pills-2">
+                                    <div class="">
+                                        <div class="col">
+                                            <div style="height: 650px">
+                                                <div class="col d-flex align-items-center justify-content-center h-100"
+                                                    style="flex-direction: column">
+                                                    <a target="_blank" download=""
+                                                    href="{{asset("uploads/newsletter/$newsletter->newsletter_bn")}}"><i
+                                                        class="fas fa-download mr-3"></i>Download Newsletter</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                </div>
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>

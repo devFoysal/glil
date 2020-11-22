@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('css/owl-carousel/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl-carousel/owl.theme.default.min.css')}}">
 
+    <link rel="stylesheet" href="{{asset("css/bootstrap-datepicker3.min.css")}}">
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/frontend-customize.css")}}">
 
@@ -316,8 +317,9 @@
                 @endif
 
             </li>
-            <li><a href="#" class="entypo-self" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
-                    data-placement="left" title="Premium Calculator"><img src={{asset('assets/img/calculate.png')}}
+            <li><a href="{{route('premiumCalculator', app()->getLocale())}}" class="entypo-self"
+                    style="border-top: 0.5px solid #C6781B" data-toggle="tooltip" data-placement="left"
+                    title="Premium Calculator"><img src={{asset('assets/img/calculate.png')}}
                         alt=""><span><i></i></span></a></li>
 
             <li><a href="#" class="entypo-self" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
