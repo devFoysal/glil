@@ -210,11 +210,7 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
 
     Route::get('/', function(){
         return view("pages.home.index");
-<<<<<<< HEAD
-    })->name('glil.home');
-=======
     })->name('homepage');
->>>>>>> 2372511ad07b417fbde286f0f8528431a7efb1fc
 
     Route::get('/retail', function(){
         return view("pages.retail.index");
