@@ -40,7 +40,46 @@
     </div>
 </section>
 
-@include('components.retailSlide');
+<!-- Insurance plan section -->
+<div id="family-plan">
+    <section id="insurance-plan">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    @if ($Bn)
+                    <h1>
+                    <span>{{$retail->title_bn}}</span>
+                   
+                    </h1>
+                    <p class="pb-5">{{$retail->description_bn}}</p>
+                    @else
+                    <h1>
+                        <span>{{$retail->title_en}}</span>
+                       
+                    </h1>
+                        <p class="pb-5">{{$retail->description_en}}</p>
+                    @endif
+                   
+                   
+                </div>
+            </div>
+    
+            @include('components.retailSlide')
+              
+        </div>
+        {{-- <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button
+                        class="btn yellow-btn"
+                    >
+                        view all
+                    </button>
+                </div>
+            </div>
+        </div> --}}
+    </section>
+</div>
 
 <section id="contact-us">
     <div class="container">
