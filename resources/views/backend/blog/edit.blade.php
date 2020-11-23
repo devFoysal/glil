@@ -32,6 +32,8 @@
                                 @endif>Blog</option>
                             <option value="news" @if($blog->type == 'news') {{ 'selected' }}
                                 @endif>News</option>
+                            <option value="press" @if($blog->type == 'press') {{ 'selected' }}
+                                @endif>Press</option>
                         </select>
                     </div>
                     <div class="row">

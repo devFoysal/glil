@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('css/owl-carousel/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl-carousel/owl.theme.default.min.css')}}">
 
+    <link rel="stylesheet" href="{{asset("css/bootstrap-datepicker3.min.css")}}">
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/frontend-customize.css")}}">
 
@@ -173,7 +174,7 @@
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
-            <a class="navbar-brand" href="{{route('glil.home', app()->getLocale())}}">
+            <a class="navbar-brand" href="{{route('homepage', app()->getLocale())}}">
                 <img src="{{asset("assets/img/logo.png")}}" class="img-fluid" alt="" />
             </a>
 
@@ -298,24 +299,25 @@
         {{-- Book Appointment  --}}
         <ul>
 
-            {{-- <li>
+            <li>
                 @if ($Bn)
                 <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'en']))}}"
-            class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
-            data-placement="left" title="Bangla">
-            <span style="right:0px">EN</span>
-            </a>
-            @else
-            <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'bn']))}}"
-                class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
-                data-placement="left" title="Bangla">
-                <span>বাংলা</span>
-            </a>
-            @endif
+                    class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
+                    data-placement="left" title="Bangla">
+                    <span style="right:0px">EN</span>
+                </a>
+                @else
+                <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'bn']))}}"
+                    class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
+                    data-placement="left" title="Bangla">
+                    <span>বাংলা</span>
+                </a>
+                @endif
 
-            </li> --}}
-            <li><a href="#" class="entypo-self" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
-                    data-placement="left" title="Premium Calculator"><img src={{asset('assets/img/calculate.png')}}
+            </li>
+            <li><a href="{{route('premiumCalculator', app()->getLocale())}}" class="entypo-self"
+                    style="border-top: 0.5px solid #C6781B" data-toggle="tooltip" data-placement="left"
+                    title="Premium Calculator"><img src={{asset('assets/img/calculate.png')}}
                         alt=""><span><i></i></span></a></li>
 
             <li><a href="#" class="entypo-self" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
