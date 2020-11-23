@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Retail;
 use App\Models\RetailPlan;
 use App\Models\RetailPlanList;
 use Illuminate\Http\Request;
@@ -29,5 +30,12 @@ class ReatilFrontController extends Controller
         return view("pages.retailPlanList.index",compact('planList'));
         
        
+    }
+
+    public function showRetail() {
+        $retail = Retail::first();
+        $retailPlans = RetailPlan::all();
+        return view("pages.retail.index",compact('retail','retailPlans'));
+        
     }
 }

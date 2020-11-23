@@ -61,7 +61,7 @@ class RetailPlanController extends Controller
 
         if ($request->file('banner')) {
             if (!empty($retailPlan->banner)) {
-                $this->deleteImage($retailPlan->banner);
+                $this->deleteImage($retailPlan->banner,'retail');
             }
             $retailPlan->banner =    $this->uploadImage($request->file('banner'), 'uploads/retail/');
         }

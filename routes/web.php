@@ -227,9 +227,7 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
         return view("pages.home.index");
     })->name('homepage');
 
-    Route::get('/retail', function(){
-        return view("pages.retail.index");
-    })->name("retail"); 
+    Route::get('/retail','ReatilFrontController@showRetail')->name("retail"); 
 
     Route::get('/corporate', function(){
         return view("pages.corporate.index");

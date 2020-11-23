@@ -12,4 +12,9 @@ class RetailPlan extends Model
         'name_en', 'name_bn', 'banner',
     ];
 
+    public function lists()
+    {
+        return $this->hasMany(RetailPlanList::class, 'plan_id');
+    }
+
 }
