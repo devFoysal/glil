@@ -76,8 +76,9 @@
                         @if (count($menus) > 0)
                         @foreach ($menus as $menu)
                         <li class="{{count($menu->submenus) > 0 ? 'd' : ''}}">
-                            <a class="main-link" href="{{route($menu->slug_en,app()->getLocale())}}"
-                                title="Click Here to go Retail Page">
+                            {{-- <a class="main-link" href="{{route($menu->slug_en,app()->getLocale())}}"
+                                title="Click Here to go Retail Page"> --}}
+                                <a class="main-link" href="{{$menu->slug_en != '#' || $menu->slug_en != '' ? URL::to(app()->getLocale()) . '/'. $menu->slug_en : 'abc'}}" title="Click Here to go Retail Page">
                                 @if ($Bn)
                                 {{$menu->name_bn}}
                                 @else
@@ -86,11 +87,11 @@
                                 @if (count($menu->submenus))
                                 <div class="dropdown" style="z-index: 500">
                                     @foreach ($menu->submenus as $submenu)
-                                <a class="dropdown-item" href="{{route($menu->slug_en,app()->getLocale())}}/{{$submenu->slug_en}}">
+                                    <a class="dropdown-item" href="{{$menu->slug_en == '#' || $menu->slug_en == '' ? '/'. app()->getLocale() .'/' . $submenu->slug_en : '/'. app()->getLocale() .'/'. $menu->slug_en. '/' . $submenu->slug_en }}">
                                         @if ($Bn)
-                                        {{$submenu->slug_en}}
+                                        {{$submenu->name_bn}}
                                         @else
-                                        {{$submenu->slug_en}}
+                                        {{$submenu->name_en}}
                                         @endif
                                     </a>
                                     @endforeach
@@ -135,7 +136,7 @@
     </section>
 
 
-    <section id="mobile-header">
+    {{-- <section id="mobile-header">
         <div class="top-header">
             <div class="container-fluid">
                 <div class="row">
@@ -292,7 +293,7 @@
                 </ul>
             </div>
         </nav>
-    </section>
+    </section> --}}
 
     {{-- Socail Sidebar --}}
     <div id="social-sidebar">

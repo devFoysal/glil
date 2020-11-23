@@ -423,16 +423,16 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
 
 
     // Corporate FrontView
-    Route::get('/corporate', 'GLILController@corporate')->name("corporate"); 
+    Route::get('corporate', 'GLILController@corporate')->name("corporate"); 
     
     // Corporate Single Page
-    Route::get('/group-term-life', 'GLILController@gtl')->name("groupTermLife");
+    Route::get('corporate/group-term-life', 'GLILController@gtl')->name("groupTermLife");
     
-    Route::get('/critical-illness-benefit', 'GLILController@cib')->name("criticalIllnessBenefit");
+    Route::get('corporate/critical-illness-benefit', 'GLILController@cib')->name("criticalIllnessBenefit");
 
-    Route::get('/group-medical-insurance', 'GLILController@gmips')->name("groupMedical");
+    Route::get('corporate/group-medical-insurance', 'GLILController@gmips')->name("groupMedical");
 
-    Route::get('/group-personal-accident', 'GLILController@gpabs')->name("groupPersonal");
+    Route::get('corporate/group-personal-accident', 'GLILController@gpabs')->name("groupPersonal");
 
     
     Route::get('/csr-activities', function(){
