@@ -55,7 +55,15 @@
                     </a>
                 </li>
 
-                <li class="side-menu-item px-3"><a href="{{ url('admin/retail') }}" class="w-100 py-3 pl-4">Retail</a></li>
+                <li class="side-menu-item px-3"><a href="{{ url('admin/retail') }}" class="w-100 py-3 pl-4">Retail</a>
+                </li>
+
+                <li class="side-menu-item px-3"><a href="{{ url('admin/retail') }}" class="w-100 py-3 pl-4">Retail</a>
+                </li>
+                <li class="side-menu-item px-3"><a href="{{ url('admin/corporate') }}"
+                        class="w-100 py-3 pl-4">Corporate</a></li>
+                <li class="side-menu-item px-3"><a href="{{ url('admin/bancassurance') }}"
+                        class="w-100 py-3 pl-4">Bancassurance</a></li>
 
                 <hr>
                 <h5 class="text-white px-3">More</h5>

@@ -6,26 +6,8 @@ use Illuminate\Http\Request;
 
 // Models
 use App\Models\Newsblog;
-
-// Who we are
-use App\Models\AboutUs\WhoWeAre;
-use App\Models\AboutUs\GuardianValies;
-use App\Models\AboutUs\ChairmanSpeech;
-use App\Models\AboutUs\ShareHolder;
-use App\Models\AboutUs\ShareholderHeading;
-use App\Models\AboutUs\Director;
-use App\Models\AboutUs\DirectorHeading;
-
-use App\Models\AboutUs\ManagementTeam;
-use App\Models\AboutUs\ManagementTeamHeading;
-use App\Models\AboutUs\MissionVision;
-use App\Models\AboutUs\CoreValues;
-use App\Models\AboutUs\About;
-use App\Models\Video;
-use App\Models\AboutUs\CitizenCharter;
-use App\Models\AboutUs\StuffList;
-use App\Models\AboutUs\Milestone;
-use App\Models\Newsletter;
+use App\Models\Corporate;
+use App\Models\Corporateaccordion;
 
 class GLILController extends Controller
 {
@@ -43,66 +25,43 @@ class GLILController extends Controller
     }
 
 
-    // More menu items
-    public function aboutUs(){
-        $whoWeAres = WhoWeAre::where(['status' => 1])->take(1)->orderBy('id', 'asc')->first();
-        $guardianValies = GuardianValies::where(['status' => 1])->orderBy('id', 'desc')->get();
-        $chairmanSpeech = ChairmanSpeech::where(['status' => 1])->take(1)->orderBy('id', 'asc')->first();
-        $shareholders = ShareHolder::where(['status' => 1])->orderBy('orders', 'asc')->get();
-        $shareholderHeading = ShareholderHeading::first();
-        $directors = Director::where(['status' => 1])->orderBy('orders', 'asc')->get();
-        $directorHeading = DirectorHeading::first();
-
-        $mTeams = ManagementTeam::where(['status' => 1])->orderBy('orders', 'asc')->get();
-        $mtHeading = ManagementTeamHeading::first();
-        $missionVision = MissionVision::first();
-        $coreValues = CoreValues::first();
-        $aboutUs = About::first();
-        $citizenCharter = CitizenCharter::first();
-        $stuffList = StuffList::first();
-        $milestone = Milestone::first();
-        $videos = Video::where(['status' => 1, 'type' => 'aboutus'])->get();
-        return view("pages.aboutUs.index", compact([
-            'whoWeAres', 
-            'guardianValies',
-            'chairmanSpeech',
-            'shareholders',
-            'shareholderHeading',
-            'directors',
-            'directorHeading',
-            'mTeams',
-            'mtHeading',
-            'missionVision',
-            'coreValues',
-            'aboutUs',
-            'videos',
-            'citizenCharter',
-            'stuffList',
-            'milestone',
-        ]));
+    // Corporate Controller function
+    public function corporate ()
+    {
+        $corporate = Corporate::find(1);
+        $gtls = Corporateaccordion::where('page_link', 'Group Term Life')->get();
+        $cibs = Corporateaccordion::where('page_link', 'Critical Illness Benefits')->get();
+        $gmips = Corporateaccordion::where('page_link', 'Group Medical Insurance Plan')->get();
+        $gpabs = Corporateaccordion::where('page_link', 'Group Personal Accident Benefit')->get();
+        return view("pages.corporate.index", compact('corporate', 'gtls', 'cibs', 'gmips', 'gpabs'));
     }
 
-    public function coronaVirus(){
-        $videos = Video::where(['status' => 1, 'type' => 'corona-virus'])->get();
-        return view("pages.awareness.index", compact('videos'));
-    }
-    
-    public function mediaCorner(){
-        $videos = Video::where(['status' => 1])->get();
-        $newsBlogPress = Newsblog::where(['status' => 1])->get();
-        return view("pages.mediaCorner.index", compact('newsBlogPress', 'videos'));
-    }    
-    
-    public function newsletter(){
-        $newsletter = Newsletter::first();
-        return view("pages.newsletter.index", compact('newsletter'));
+    // Corporaate Single Pages view
+    public function gtl ()
+    {
+        $corporate = Corporate::find(1);
+        $gtls = Corporateaccordion::where('page_link', 'Group Term Life')->get();
+        return view("pages.corporateSinglepage.groupTermLife.index", compact('corporate', 'gtls'));
     }
 
+    public function cib ()
+    {
+        $corporate = Corporate::find(1);
+        $cibs = Corporateaccordion::where('page_link', 'Critical Illness Benefits')->get();
+        return view("pages.corporateSinglepage.criticalIllness.index", compact('corporate', 'cibs'));
+    }
 
+    public function gmips ()
+    {
+        $corporate = Corporate::find(1);
+        $gmips = Corporateaccordion::where('page_link', 'Group Medical Insurance Plan')->get();
+        return view("pages.corporateSinglepage.groupMedical.index", compact('corporate', 'gmips'));
+    }
 
-
-    // Api
-    public function premiumCalculator(){
-        return view("pages.calculator.index");
+    public function gpabs ()
+    {
+        $corporate = Corporate::find(1);
+        $gpabs = Corporateaccordion::where('page_link', 'Group Personal Accident Benefit')->get();
+        return view("pages.corporateSinglepage.groupPersonal.index", compact('corporate', 'gpabs'));
     }
 }
