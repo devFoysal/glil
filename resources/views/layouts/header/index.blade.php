@@ -30,7 +30,7 @@
 
 <body>
     <section id="header">
-        <a href="{{route('glil.home', app()->getLocale())}}" class="logo">
+        <a href="{{route('homepage', app()->getLocale())}}" class="logo">
             <img src="{{asset("assets/img/logo.png")}}" class="img-fluid" alt="" />
         </a>
         <div class="top-header">
@@ -176,7 +176,7 @@
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
-            <a class="navbar-brand" href="{{route('glil.home', app()->getLocale())}}">
+            <a class="navbar-brand" href="{{route('homepage', app()->getLocale())}}">
                 <img src="{{asset("assets/img/logo.png")}}" class="img-fluid" alt="" />
             </a>
 
