@@ -29,11 +29,7 @@
 
 <body>
     <section id="header">
-<<<<<<< HEAD
-        <a href="{{route('glil.home', app()->getLocale())}}" class="logo">
-=======
         <a href="{{route('homepage', app()->getLocale())}}" class="logo">
->>>>>>> 2372511ad07b417fbde286f0f8528431a7efb1fc
             <img src="{{asset("assets/img/logo.png")}}" class="img-fluid" alt="" />
         </a>
         <div class="top-header">
@@ -79,12 +75,7 @@
                         @if (count($menus) > 0)
                         @foreach ($menus as $menu)
                         <li class="{{count($menu->submenus) > 0 ? 'd' : ''}}">
-<<<<<<< HEAD
-                            <a class="main-link"
-                                href="{{$menu->slug_en != '#' || $menu->slug_en != '' ? URL::to(app()->getLocale()) . '/'. $menu->slug_en : '#'}}"
-=======
                             <a class="main-link" href="{{route($menu->slug_en,app()->getLocale())}}"
->>>>>>> 2372511ad07b417fbde286f0f8528431a7efb1fc
                                 title="Click Here to go Retail Page">
                                 @if ($Bn)
                                 {{$menu->name_bn}}
@@ -94,12 +85,7 @@
                                 @if (count($menu->submenus))
                                 <div class="dropdown" style="z-index: 500">
                                     @foreach ($menu->submenus as $submenu)
-<<<<<<< HEAD
-                                    <a class="dropdown-item"
-                                        href="{{$submenu->slug_en != '#' || $submenu->slug_en != '' ? URL::to(app()->getLocale()) . '/'. $submenu->slug_en : '#'}}">
-=======
                                 <a class="dropdown-item" href="{{route($menu->slug_en,app()->getLocale())}}/{{$submenu->slug_en}}">
->>>>>>> 2372511ad07b417fbde286f0f8528431a7efb1fc
                                         @if ($Bn)
                                         {{$submenu->slug_en}}
                                         @else
@@ -187,7 +173,7 @@
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
-            <a class="navbar-brand" href="{{route('glil.home', app()->getLocale())}}">
+            <a class="navbar-brand" href="{{route('homepage', app()->getLocale())}}">
                 <img src="{{asset("assets/img/logo.png")}}" class="img-fluid" alt="" />
             </a>
 
@@ -312,7 +298,7 @@
         {{-- Book Appointment  --}}
         <ul>
 
-            {{-- <li>
+            <li>
                 @if ($Bn)
                 <a href="{{route(Route::currentRouteName(), array_merge(request()->route()->parameters, ['language' => 'en']))}}"
             class="transform2 bangla" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
@@ -327,7 +313,7 @@
             </a>
             @endif
 
-            </li> --}}
+            </li>
             <li><a href="#" class="entypo-self" style="border-top: 0.5px solid #C6781B" data-toggle="tooltip"
                     data-placement="left" title="Premium Calculator"><img src={{asset('assets/img/calculate.png')}}
                         alt=""><span><i></i></span></a></li>
