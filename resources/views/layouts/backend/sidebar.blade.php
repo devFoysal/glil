@@ -26,8 +26,7 @@
                         Menu</a></li>
                 <li class="side-menu-item px-3"><a href="{{ url('admin/submenu') }}" class="w-100 py-3 pl-4">Manage
                         Submenu</a></li>
-                <li class="side-menu-item px-3"><a href="{{ url('admin/tabmenu') }}" class="w-100 py-3 pl-4">Manage
-                        Tabmenu</a></li>
+                
                 <!-- Sub Menu -->
                 <li class="side-menu-item px-3">
                     <a href="#" class="w-100 py-3 pl-4 sub-menu-parent" data-toggle="collapse" data-target="#sub_menu_1"
@@ -58,8 +57,6 @@
                 <li class="side-menu-item px-3"><a href="{{ url('admin/retail') }}" class="w-100 py-3 pl-4">Retail</a>
                 </li>
 
-                <li class="side-menu-item px-3"><a href="{{ url('admin/retail') }}" class="w-100 py-3 pl-4">Retail</a>
-                </li>
                 <li class="side-menu-item px-3"><a href="{{ url('admin/corporate') }}"
                         class="w-100 py-3 pl-4">Corporate</a></li>
                 <li class="side-menu-item px-3"><a href="{{ url('admin/bancassurance') }}"

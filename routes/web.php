@@ -85,7 +85,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'App\H
         Route::get('destroy/{id}', 'NewsblogController@destroy')->name('newsblog.destroy');
     }); 
 
-        // More menu items
+        // Claim Route 
         Route::group(['prefix' => 'claims'], function(){
             Route::get('/', 'Claims\ClaimController@index')->name('claims.claim.home');
             Route::get('/edit/', 'Claims\ClaimController@edit')->name('claims.claim.edit');
@@ -249,28 +249,28 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'App\H
 
 
     // Bancassurance Routes
-    Route::group(['prefix' => 'bancassurance'], function() {
+    // Route::group(['prefix' => 'bancassurance'], function() {
 
-        Route::get('/', 'BancassuranceController@index')->name('bancassurance.index');
+    //     Route::get('/', 'BancassuranceController@index')->name('bancassurance.index');
 
-        Route::get('edit/{id}', 'BancassuranceController@edit')->name('bancassurance.edit');
+    //     Route::get('edit/{id}', 'BancassuranceController@edit')->name('bancassurance.edit');
 
-        Route::post('update', 'BancassuranceController@update')->name('corporate.update');
+    //     Route::post('update', 'BancassuranceController@update')->name('corporate.update');
 
-        Route::group(['prefix' => 'accordion'], function(){
+    //     Route::group(['prefix' => 'accordion'], function(){
 
-            Route::get('create', 'BancassuranceController@createaccordion')->name('corporateaccordion.create');
+    //         Route::get('create', 'BancassuranceController@createaccordion')->name('corporateaccordion.create');
 
-            Route::post('store', 'BancassuranceController@storeaccordion')->name('corporateaccordion.store');
+    //         Route::post('store', 'BancassuranceController@storeaccordion')->name('corporateaccordion.store');
 
-            Route::get('edit/{id}', 'BancassuranceController@editaccordion')->name('corporateaccordion.edit');
+    //         Route::get('edit/{id}', 'BancassuranceController@editaccordion')->name('corporateaccordion.edit');
     
-            Route::post('update', 'BancassuranceController@updateaccordion')->name('corporateaccordion.update');
+    //         Route::post('update', 'BancassuranceController@updateaccordion')->name('corporateaccordion.update');
 
-            Route::get('destory/{id}', 'BancassuranceController@destroyaccordion')->name('corporateaccordion.destroy');
-        });
+    //         Route::get('destory/{id}', 'BancassuranceController@destroyaccordion')->name('corporateaccordion.destroy');
+    //     });
      
-    });
+    // });
 });
 
 
