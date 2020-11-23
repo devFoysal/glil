@@ -63,6 +63,7 @@
                         class="w-100 py-3 pl-4">Bancassurance</a></li>
 
 
+
                  <!-- Claim -->
                  <li class="side-menu-item px-3">
                     <a href="#" class="w-100 py-3 pl-4 sub-menu-parent" data-toggle="collapse" data-target="#sub_menu_3"
@@ -92,7 +93,8 @@
                 </div>
 
 
-
+                <li class="side-menu-item px-3"><a href="{{ url('admin/appoitnment') }}" class="w-100 py-3 pl-4">Book Appointment</a>
+                </li>
 
                 <hr>
                 <h5 class="text-white px-3">More</h5>

@@ -84,21 +84,30 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'App\H
         Route::post('update', 'NewsblogController@update')->name('newsblog.update');
         Route::get('destroy/{id}', 'NewsblogController@destroy')->name('newsblog.destroy');
     }); 
+    // Appointment Route 
+    Route::group(['prefix' => 'appointment'], function(){
+        Route::get('/', 'Appointment\BookAppointmentController@index')->name('appointment.home');
+        Route::get('/edit/{id}', 'Appointment\BookAppointmentController@edit')->name('appointment.edit');
+        Route::put('/update', 'Appointment\BookAppointmentController@update')->name('appointment.update');
+
+        Route::get('/destroy/{id}', 'Appointment\BookAppointmentController@destroy')->name('appointment.destroy');
+
+    });
 
         // Claim Route 
         Route::group(['prefix' => 'claims'], function(){
             Route::get('/', 'Claims\ClaimController@index')->name('claims.claim.home');
             Route::get('/edit/', 'Claims\ClaimController@edit')->name('claims.claim.edit');
             Route::put('/update', 'Claims\ClaimController@update')->name('claims.claim.update');
-        Route::group(['prefix' => 'overview'], function(){
-            Route::get('/edit/', 'Claims\OverViewController@edit')->name('claims.overview.edit');
-            Route::put('/update', 'Claims\OverViewController@update')->name('claims.overview.update');
-        });
+            Route::group(['prefix' => 'overview'], function(){
+                Route::get('/edit/', 'Claims\OverViewController@edit')->name('claims.overview.edit');
+                Route::put('/update', 'Claims\OverViewController@update')->name('claims.overview.update');
+            });
 
-        Route::group(['prefix' => 'claimSubmission'], function(){
-            Route::get('/edit/', 'Claims\claimSubmissionController@edit')->name('claims.claimSubmission.edit');
-            Route::put('/update', 'Claims\claimSubmissionController@update')->name('claims.claimSubmission.update');
-        });
+            Route::group(['prefix' => 'claimSubmission'], function(){
+                Route::get('/edit/', 'Claims\claimSubmissionController@edit')->name('claims.claimSubmission.edit');
+                Route::put('/update', 'Claims\claimSubmissionController@update')->name('claims.claimSubmission.update');
+            });
 
         });
     
@@ -303,6 +312,8 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
     Route::get('/book-appointment', function(){
         return view("pages.bookAppointment.index");
     })->name("bookAppointment");
+
+    Route::post('/book-appointment','AppointmentFrontController@add')->name('appointment.add');
 
     Route::get('/confirm-appointment', function(){
         return view("pages.appointmentConfirm.index");
