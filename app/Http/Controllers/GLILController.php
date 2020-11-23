@@ -21,10 +21,11 @@ use App\Models\AboutUs\ManagementTeamHeading;
 use App\Models\AboutUs\MissionVision;
 use App\Models\AboutUs\CoreValues;
 use App\Models\AboutUs\About;
-use App\Models\AboutUs\Video;
+use App\Models\Video;
 use App\Models\AboutUs\CitizenCharter;
 use App\Models\AboutUs\StuffList;
 use App\Models\AboutUs\Milestone;
+use App\Models\Newsletter;
 
 class GLILController extends Controller
 {
@@ -60,7 +61,7 @@ class GLILController extends Controller
         $citizenCharter = CitizenCharter::first();
         $stuffList = StuffList::first();
         $milestone = Milestone::first();
-        $videos = Video::where(['status' => 1])->get();
+        $videos = Video::where(['status' => 1, 'type' => 'aboutus'])->get();
         return view("pages.aboutUs.index", compact([
             'whoWeAres', 
             'guardianValies',
@@ -79,5 +80,29 @@ class GLILController extends Controller
             'stuffList',
             'milestone',
         ]));
+    }
+
+    public function coronaVirus(){
+        $videos = Video::where(['status' => 1, 'type' => 'corona-virus'])->get();
+        return view("pages.awareness.index", compact('videos'));
+    }
+    
+    public function mediaCorner(){
+        $videos = Video::where(['status' => 1])->get();
+        $newsBlogPress = Newsblog::where(['status' => 1])->get();
+        return view("pages.mediaCorner.index", compact('newsBlogPress', 'videos'));
+    }    
+    
+    public function newsletter(){
+        $newsletter = Newsletter::first();
+        return view("pages.newsletter.index", compact('newsletter'));
+    }
+
+
+
+
+    // Api
+    public function premiumCalculator(){
+        return view("pages.calculator.index");
     }
 }
