@@ -1,19 +1,27 @@
 @extends("layouts.master")
-@section("title", "Claims")
+@if($Bn)
+@section("title", $claim->name_bn)
+@else
+@section("title", $claim->name_en)
+@endif
 @section("content")
 
 <section
     id="banner-no-text"
-    style="background-image: url({{asset("assets/img/claimsbg.png")}})"
+    style="background-image: url({{asset('uploads/claim/'.$claim->banner)}})"
 ></section>
 
 <section id="bread-crumb">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="{{route('home', app()->getLocale())}}">
-                    Back to Home
-                </a>
+              <a href="{{route('homepage', app()->getLocale())}}">
+                @if ($Bn)
+                <i class="fas fa-home"></i> হোম
+                @else
+                <i class="fas fa-home"></i> Back to Home
+                @endif
+            </a>
             </div>
         </div>
     </div>
@@ -23,7 +31,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h4>Claims</h4>
+              @if($Bn)
+            <h4>{{$claim->name_bn}}</h4>
+              @else
+              <h4>{{$claim->name_en}}</h4>
+              @endif
+                
             </div>
         </div>
         <div class="row">
@@ -52,7 +65,12 @@
                                     aria-controls="#v-pills-1"
                                     aria-selected="true"
                                 >
-                                    Overview <span></span>
+                                    @if($Bn)
+                                    {{$overview->name_bn}}
+                                    @else 
+                                    {{$overview->name_en}}
+                                    @endif
+                                    <span></span>
                                 </a>
                                 <a
                                     class="nav-link"
@@ -63,7 +81,11 @@
                                     aria-controls="#v-pills-2"
                                     aria-selected="true"
                                 >
-                                    Claim Submission <span></span>
+                                @if($Bn)
+                                {{$claimSubmission->name_bn}}
+                                @else 
+                                {{$claimSubmission->name_en}}
+                                @endif <span></span>
                                 </a>
                                 <a
                                     class="nav-link"
@@ -137,83 +159,17 @@
                                 >
                                     <div>
                                         <div class="col">
-                                            <p>
-                                                Guardian Life Insurance
-                                                Limited (GLIL) is the
-                                                fastest growing Life
-                                                Insurance Company in
-                                                Bangladesh. Being the
-                                                leading group insurer,
-                                                GLIL has been working
-                                                towards financial
-                                                inclusion; it’s
-                                                partnership with BRAC
-                                                has spread the reach of
-                                                GLIL quite extensively
-                                                with over 6.4 million
-                                                lives coming under the
-                                                umbrella of GLIL. GLIL
-                                                has gone all out when it
-                                                comes to keeping such a
-                                                mammoth commitment.
-                                            </p>
-    
-                                            <p>
-                                                The Policyholder shall
-                                                submit the claim by
-                                                filling up the claim
-                                                form along with all the
-                                                supporting documents.
-                                                Claims can be submitted
-                                                by physically/courier to
-                                                the following address:
-                                            </p>
-    
-                                            <p>
-                                                Partnering with the
-                                                world’s largest NGO and
-                                                disseminating a service
-                                                necessitated the
-                                                placement of a strong
-                                                Claim Processing Engine
-                                                that can quench the
-                                                claim flow generated by
-                                                such an enormous
-                                                operation! GLIL has
-                                                worked in two folds when
-                                                it comes to the Claim
-                                                Processing Engine,
-                                                driving on both quantity
-                                                and quality.
-                                            </p>
-    
-                                            <li>
-                                                <strong>
-                                                    
-                                                </strong>
-                                                GLIL has smartly taken the help of digital technology, utilized own resources and immobilized the huge infrastructure of BRAC to reach out to the millions of under privileged population of Bangladesh and bring in their lives the Midas Touch of Life Insurance. Capitalizing on the boon of technology in the claim processing, GLIL introduced MyGuardian Web Portal to drive effectiveness and efficiency in claim processing.
-                                            </li>
-                                            <li>
-                                                <strong>Innovation-Driven Claim Process Engine </strong> has brought in significant quality improvement; the beneficiaries of a policyholder under the Guardian-Brac Bima (GBB) program get on-the-spot cash benefit (funeral benefit) upon making a claim – this helps them deal with the initial trauma. GLIL takes about 4 business days for processing and settlement. This is way above the industry practice.
-                                            </li>
-                                            <li>
-                                                <strong>Overcoming Geographical Barriers: </strong>Under scope of this Guardian-Brac Bima (GBB), an insurance company for the first time in the country has fully utilized the aggregator’s (BRAC) infrastructure (2224 branches) to provide instant and quality service.
-                                            </li>
-                                            <li>
-                                                <strong>Efficient Claim Handling: </strong> GLIL has also been very keen to payout claims diligently as this is a great responsibility in terms of Insurance sector development and branding. GLIL aspires to be the harbinger of financial independence to this large population who are usually considered to be “uninsurable” for being poor.
-                                            </li>
-                                            <li>
-                                                <strong>Transparency: </strong>An insured person can submit his claim and see his claim status any time from GLIL’s web portal. Besides, all the preferred hospitals that provide cashless facilities to the insured of GLIL also can oversee their payment status concurrently.
-                                            </li>
-                                            <li>
-                                                <strong>Easy Claims and Data Capture: </strong>The claim process in GLIL is easy and a customer can get a very friendly claim handling process experience conducted by a very efficient and communicative team of claim officers. Documents can easily be submitted via MyGuardian Web Portal.
-                                            </li>
-                                            <li>
-                                                <strong>Breaking Milestones: </strong>This magnanimous venture has resulted into 9,644 claims being settled with 75 crores BDT paid out till date – the amount is quite big in itself; however the true pride for GLIL lies in the efficiency of the process and the thousands of ultra-poor people whose miseries have been alleviated by this big-ticket initiative of Guardian and BRAC.
-                                            </li>
-                                            <li>
-                                                <strong>Guardian Claim Process Engine </strong>has not only helped drastically improve GBB performance but also enabled GLIL achieve excellent claim settlement scores in overall business. Since 2016, GLIL has received a total of <strong>41,228 claims</strong>, of which <strong>38,470 claims</strong> have been settled <strong>(93%)</strong> resulting into payout of BDT <strong>90.2 crores</strong>.
-                                            </li>
+                                            
+                                            
+                                          @if($Bn)
+                                          {!!$overview->description_bn!!}
+
+                                          @else 
+                                          {!!$overview->description_en!!}
+
+                                          @endif
+                                           
+                              
                                             
                                         </div>
                                     </div>
@@ -228,41 +184,16 @@
                                 >
                                     <div>
                                         <div class="col">
-                                            <h6>Manual Submission:</h6>
-                                            <p>
-                                                The Policyholder shall
-                                                submit the claim by
-                                                filling up the claim
-                                                form along with all the
-                                                supporting documents.
-                                                Claims can be submitted
-                                                by physically/courier to
-                                                the following address:
-                                            </p>
+                                           
+                                          @if($Bn)
+                                          {!!$claimSubmission->description_bn!!}
+
+                                          @else 
+                                          {!!$claimSubmission->description_en!!}
+
+                                          @endif
     
-                                            <h6>Address:</h6>
-                                            <div class="address">
-                                                <p>Claims Department</p>
-                                                <p>
-                                                    Police Plaza Concord
-                                                    (13th Floor), Tower-
-                                                    02,
-                                                </p>
-                                                <p>
-                                                    Plot # 02, Road #
-                                                    144, Gulshan Avenue,
-                                                    Dhaka- 1212.
-                                                </p>
-                                                <p>
-                                                    Guardian Life
-                                                    Insurance Limited.
-                                                </p>
-                                            </div>
-                                            <img
-                                                src="{{asset("assets/img/claims/submission.jpg")}}"
-                                                class="img-fluid pt-4"
-                                                alt=""
-                                            />
+                                            
                                         </div>
                                     </div>
                                 </div>

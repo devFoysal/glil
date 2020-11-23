@@ -215,9 +215,7 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
 
 Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], function(){
 
-    Route::get('/', function(){
-        return view("pages.home.index");
-    })->name('homepage');
+    Route::get('/', 'HomeFrontController@index')->name('homepage');
 
     Route::get('/retail','ReatilFrontController@showRetail')->name("retail"); 
 
@@ -255,9 +253,7 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
         return view("pages.newsEvent.index");
     })->name("newsEvent");
 
-    Route::get('/claims', function(){
-        return view("pages.claims.index");
-    })->name("claims");
+    Route::get('/claims','ClaimFrontController@index')->name("claims");
 
     Route::get('/faq', function(){
         return view("pages.faq.index");

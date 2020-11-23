@@ -67,7 +67,7 @@
             @include('components.retailSlide')
               
         </div>
-        <div class="container mt-5">
+        {{-- <div class="container mt-5">
             <div class="row">
                 <div class="col-12 text-center">
                     <button
@@ -77,7 +77,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
 </div>
 
