@@ -28,10 +28,8 @@
                         <label for="type">Select Type</label>
                         <select name="type" id="type" class="form-control">
                             <option selected disabled>-- Select Blog or News --</option>
-                            <option value="blog" @if($blog->type == 'blog') {{ 'selected' }}
-                                @endif>Blog</option>
-                            <option value="news" @if($blog->type == 'news') {{ 'selected' }}
-                                @endif>News</option>
+                            <option value="blog" @if($blog->type == 'blog') {{ 'selected' }} @endif>Blog</option>
+                            <option value="news" @if($blog->type == 'news') {{ 'selected' }} @endif>News</option>
                         </select>
                     </div>
                     <div class="row">

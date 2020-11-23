@@ -92,7 +92,55 @@ Route::group(['prefix' => 'admin','namespace' => 'App\Http\Controllers\Backend']
         Route::get('edit/{id}', 'NewsblogController@edit')->name('newsblog.edit');
         Route::post('update', 'NewsblogController@update')->name('newsblog.update');
         Route::get('destroy/{id}', 'NewsblogController@destroy')->name('newsblog.destroy');
-    });    
+    });  
+    
+    // Corporate Routes
+    Route::group(['prefix' => 'corporate'], function(){
+
+        Route::get('/', 'CorporateController@index')->name('corporate.index');
+
+        Route::get('edit/{id}', 'CorporateController@edit')->name('corporate.edit');
+
+        Route::post('update', 'CorporateController@update')->name('corporate.update');
+
+        Route::group(['prefix' => 'accordion'], function(){
+
+            Route::get('create', 'CorporateController@createaccordion')->name('corporateaccordion.create');
+
+            Route::post('store', 'CorporateController@storeaccordion')->name('corporateaccordion.store');
+
+            Route::get('edit/{id}', 'CorporateController@editaccordion')->name('corporateaccordion.edit');
+    
+            Route::post('update', 'CorporateController@updateaccordion')->name('corporateaccordion.update');
+
+            Route::get('destory/{id}', 'CorporateController@destroyaccordion')->name('corporateaccordion.destroy');
+        });
+    });
+
+
+    // Bancassurance Routes
+    Route::group(['prefix' => 'bancassurance'], function() {
+
+        Route::get('/', 'BancassuranceController@index')->name('bancassurance.index');
+
+        Route::get('edit/{id}', 'BancassuranceController@edit')->name('bancassurance.edit');
+
+        Route::post('update', 'BancassuranceController@update')->name('corporate.update');
+
+        Route::group(['prefix' => 'accordion'], function(){
+
+            Route::get('create', 'BancassuranceController@createaccordion')->name('corporateaccordion.create');
+
+            Route::post('store', 'BancassuranceController@storeaccordion')->name('corporateaccordion.store');
+
+            Route::get('edit/{id}', 'BancassuranceController@editaccordion')->name('corporateaccordion.edit');
+    
+            Route::post('update', 'BancassuranceController@updateaccordion')->name('corporateaccordion.update');
+
+            Route::get('destory/{id}', 'BancassuranceController@destroyaccordion')->name('corporateaccordion.destroy');
+        });
+     
+    });
 });
 
 
@@ -108,9 +156,9 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
         return view("pages.retail.index");
     })->name("retail"); 
 
-    Route::get('/corporate', function(){
-        return view("pages.corporate.index");
-    })->name("corporate"); 
+    // Route::get('/corporate', function(){
+    //     return view("pages.corporate.index");
+    // })->name("corporate"); 
 
     Route::get('/bancassurance', function(){
         return view("pages.home.index");
@@ -219,19 +267,7 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
         return view("pages.retailSinglePage.supplymentary.index");
     })->name("supplymentary");
 
-    // Corporate Single Page
-    Route::get('/group-term-life', function(){
-        return view("pages.corporateSinglepage.groupTermLife.index");
-    })->name("groupTermLife");
-    Route::get('/critical-illness-benefit', function(){
-        return view("pages.corporateSinglepage.criticalIllness.index");
-    })->name("criticalIllnessBenefit");
-    Route::get('/group-medical-insurance', function(){
-        return view("pages.corporateSinglepage.groupMedical.index");
-    })->name("groupMedical");
-    Route::get('/group-personal-accident', function(){
-        return view("pages.corporateSinglepage.groupPersonal.index");
-    })->name("groupPersonal");
+    
 
     // more page
     Route::get('/media-corner', function(){
@@ -263,6 +299,21 @@ Route::group(['prefix' => '{language}', 'namespace' => 'App\Http\Controllers'], 
     Route::get('/blogs','GLILController@blogs')->name("blogs");
     Route::get('/blog/{id}','GLILController@blog')->name("blog.detail");
 
+
+
+    // Corporate FrontView
+    Route::get('/corporate', 'GLILController@corporate')->name("corporate"); 
+    
+    // Corporate Single Page
+    Route::get('/group-term-life', 'GLILController@gtl')->name("groupTermLife");
+    
+    Route::get('/critical-illness-benefit', 'GLILController@cib')->name("criticalIllnessBenefit");
+
+    Route::get('/group-medical-insurance', 'GLILController@gmips')->name("groupMedical");
+
+    Route::get('/group-personal-accident', 'GLILController@gpabs')->name("groupPersonal");
+
+    
     Route::get('/csr-activities', function(){
         return view("pages.csr.index");
     })->name("CSR");
